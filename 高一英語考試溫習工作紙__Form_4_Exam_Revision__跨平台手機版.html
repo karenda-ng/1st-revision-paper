@@ -1,0 +1,3437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Form 4 Exam Revision 高一英語溫習工作紙</title>
+  <style>
+    /* =====================================================================
+       1. Design Tokens & Macaron Pastel Theme (Zero External Dependencies)
+       ===================================================================== */
+    :root {
+      --mint-main: #10b981;
+      --mint-dark: #047857;
+      --mint-bg: #ecfdf5;
+      --mint-border: #a7f3d0;
+
+      --blue-main: #3b82f6;
+      --blue-dark: #1d4ed8;
+      --blue-bg: #eff6ff;
+      --blue-border: #bfdbfe;
+
+      --pink-main: #ec4899;
+      --pink-dark: #be185d;
+      --pink-bg: #fdf2f8;
+      --pink-border: #fbcfe8;
+
+      --amber-main: #f59e0b;
+      --amber-dark: #b45309;
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+
+      --rose-main: #e11d48;
+      --rose-dark: #be123c;
+      --rose-bg: #fff1f2;
+      --rose-border: #fecdd3;
+
+      --bg-page: #f8fafc;
+      --card-bg: #ffffff;
+      --border-light: #e2e8f0;
+      --text-main: #1e293b;
+      --text-sub: #475569;
+      --text-muted: #64748b;
+
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 6px 20px rgba(59, 130, 246, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #ecfdf5 0%, #eff6ff 170px, #f8fafc 380px);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      overflow-x: hidden;
+      padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    }
+
+    /* Cross-platform iOS & Android input/button normalization */
+    input,
+    textarea,
+    select,
+    button {
+      font-family: inherit;
+      font-size: 16px; /* Prevents iOS Safari zoom on focus */
+      -webkit-appearance: none;
+      appearance: none;
+      touch-action: manipulation;
+    }
+
+    input[type="radio"] {
+      -webkit-appearance: radio;
+      appearance: auto;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* =====================================================================
+       2. Sticky Top Header, Safe Area, Summary Bar & Scrollable Tabs
+       ===================================================================== */
+    .top-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--blue-border);
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.06);
+      padding-top: env(safe-area-inset-top);
+    }
+
+    .top-header-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 10px 14px 8px;
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--mint-main), var(--blue-main));
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 3px 8px rgba(16, 185, 129, 0.25);
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .save-pill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--mint-bg);
+      color: var(--mint-dark);
+      padding: 1px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .save-pill.show {
+      opacity: 1;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .btn-mini {
+      min-height: 44px;
+      padding: 0 11px;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.12s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-mini:active {
+      transform: scale(0.96);
+    }
+
+    .btn-demo {
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+      border: 1px solid var(--blue-border);
+    }
+
+    .btn-report {
+      background: var(--pink-bg);
+      color: var(--pink-dark);
+      border: 1px solid var(--pink-border);
+    }
+
+    /* Global Total Score Progress Summary Bar */
+    .summary-bar {
+      width: 100%;
+      margin-top: 8px;
+      padding: 9px 12px;
+      min-height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--mint-bg), var(--blue-bg));
+      border: 1px solid var(--mint-border);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+      transition: transform 0.12s ease;
+    }
+
+    .summary-bar:active {
+      transform: scale(0.99);
+    }
+
+    .summary-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .summary-metrics {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .summary-score-pill {
+      color: var(--mint-dark);
+      background: #ffffff;
+      padding: 1px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--mint-border);
+      font-weight: 800;
+    }
+
+    .summary-link {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      white-space: nowrap;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--mint-main), var(--blue-main));
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    /* Horizontally Scrollable Section Tabs */
+    .tabs-scroll {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-top: 8px;
+      padding-bottom: 2px;
+    }
+
+    .tabs-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-pill {
+      flex-shrink: 0;
+      min-height: 44px;
+      padding: 0 13px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: var(--text-sub);
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .tab-pill.active {
+      background: var(--blue-main);
+      color: #ffffff;
+      box-shadow: 0 3px 8px rgba(59, 130, 246, 0.28);
+    }
+
+    .tab-pill.completed:not(.active) {
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+      border-color: var(--blue-border);
+    }
+
+    .tab-pill.grade-high:not(.active) {
+      background: var(--mint-bg);
+      color: var(--mint-dark);
+      border-color: var(--mint-border);
+    }
+
+    .tab-pill.grade-mid:not(.active) {
+      background: var(--amber-bg);
+      color: var(--amber-dark);
+      border-color: var(--amber-border);
+    }
+
+    .tab-pill.grade-low:not(.active) {
+      background: var(--rose-bg);
+      color: var(--rose-dark);
+      border-color: var(--rose-border);
+    }
+
+    .tab-dot {
+      font-size: 11.5px;
+      font-weight: 800;
+      opacity: 0.92;
+    }
+
+    /* =====================================================================
+       3. Main Layout & Student Info Card
+       ===================================================================== */
+    .main-container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .student-card-header {
+      width: 100%;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, var(--mint-bg), var(--blue-bg));
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 14px;
+      min-height: 48px;
+    }
+
+    .student-card-body {
+      padding: 14px 16px 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .student-card-body.collapsed {
+      display: none;
+    }
+
+    @media (min-width: 560px) {
+      .student-card-body {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .text-input,
+    .text-area {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .text-input:focus,
+    .text-area:focus {
+      border-color: var(--blue-main);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+    }
+
+    .text-area {
+      min-height: 70px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    .input-correct {
+      border-color: var(--mint-main) !important;
+      background: var(--mint-bg) !important;
+      color: var(--mint-dark) !important;
+    }
+
+    .input-wrong {
+      border-color: var(--rose-main) !important;
+      background: var(--rose-bg) !important;
+      color: var(--rose-dark) !important;
+    }
+
+    /* =====================================================================
+       4. Section Card, Per-Section Score Card & Subheaders
+       ===================================================================== */
+    .section-card {
+      display: block;
+    }
+
+    .section-card.hidden {
+      display: none;
+    }
+
+    .section-head {
+      padding: 15px 16px;
+      background: linear-gradient(135deg, var(--blue-bg) 0%, var(--mint-bg) 60%, var(--pink-bg) 100%);
+      border-bottom: 1px solid var(--blue-border);
+    }
+
+    .section-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .sec-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .sec-score-badge {
+      display: none;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .sec-score-badge.show {
+      display: inline-block;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 17.5px;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+
+    .section-sub {
+      margin: 5px 0 0;
+      font-size: 13.5px;
+      color: var(--text-sub);
+    }
+
+    .sec-result-card {
+      display: none;
+      margin: 12px 12px 0;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--mint-bg) 0%, var(--blue-bg) 100%);
+      border: 1.5px solid var(--mint-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sec-result-card.show {
+      display: block;
+    }
+
+    .sec-result-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sec-result-score {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .sec-result-pct {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #ffffff;
+      vertical-align: middle;
+    }
+
+    .sec-result-comment {
+      margin: 6px 0 10px;
+      font-size: 13.5px;
+      color: var(--text-sub);
+    }
+
+    .sec-result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-sec-action {
+      flex: 1;
+      min-width: 108px;
+      min-height: 44px;
+      padding: 0 12px;
+      border-radius: 11px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1.5px solid var(--border-light);
+      background: #ffffff;
+      color: var(--text-main);
+      transition: all 0.15s ease;
+    }
+
+    .btn-sec-action.wrong-active {
+      background: var(--pink-main);
+      border-color: var(--pink-main);
+      color: #ffffff;
+    }
+
+    .btn-sec-action.regrade {
+      background: var(--blue-bg);
+      border-color: var(--blue-border);
+      color: var(--blue-dark);
+    }
+
+    .btn-sec-action.retake {
+      background: var(--rose-bg);
+      border-color: var(--rose-border);
+      color: var(--rose-dark);
+    }
+
+    .section-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .subpart-header {
+      padding: 9px 12px;
+      border-radius: 11px;
+      background: var(--pink-bg);
+      border: 1px solid var(--pink-border);
+      color: var(--pink-dark);
+      font-size: 14px;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    /* =====================================================================
+       5. Grids & Question Cards
+       ===================================================================== */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    @media (min-width: 600px) {
+      .vocab-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .q-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 13px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .q-card.hidden {
+      display: none;
+    }
+
+    .q-card.state-correct {
+      border-color: var(--mint-main);
+      background: #f5fdf9;
+    }
+
+    .q-card.state-wrong {
+      border-color: var(--rose-main);
+      background: #fff8f9;
+    }
+
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .q-num {
+      flex-shrink: 0;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 6px;
+      border-radius: 9px;
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .q-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .q-prompt {
+      margin: 0 0 9px;
+      font-size: 15.5px;
+      color: var(--text-main);
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    /* MCQ Touch Options (min-height >= 48px) */
+    .mcq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mcq-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .mcq-option:active {
+      transform: scale(0.99);
+    }
+
+    .mcq-option.selected {
+      border-color: var(--blue-main);
+      background: var(--blue-bg);
+    }
+
+    .mcq-option.opt-correct {
+      border-color: var(--mint-main) !important;
+      background: var(--mint-bg) !important;
+    }
+
+    .mcq-option.opt-wrong {
+      border-color: var(--rose-main) !important;
+      background: var(--rose-bg) !important;
+    }
+
+    .mcq-option input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--blue-main);
+      flex-shrink: 0;
+      margin: 0;
+    }
+
+    .mcq-text {
+      font-size: 15px;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    /* Modal Verb Tap Pills (Part G) */
+    .pill-choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .choice-pill {
+      flex: 1;
+      min-width: 112px;
+      min-height: 46px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
+      background: #f8fafc;
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.15s ease;
+    }
+
+    .choice-pill:active {
+      transform: scale(0.97);
+    }
+
+    .choice-pill.selected {
+      background: var(--blue-main);
+      border-color: var(--blue-main);
+      color: #ffffff;
+      box-shadow: 0 3px 10px rgba(59, 130, 246, 0.25);
+    }
+
+    .choice-pill.pill-correct {
+      background: var(--mint-main) !important;
+      border-color: var(--mint-main) !important;
+      color: #ffffff !important;
+    }
+
+    .choice-pill.pill-wrong {
+      background: var(--rose-main) !important;
+      border-color: var(--rose-main) !important;
+      color: #ffffff !important;
+    }
+
+    .blank-preview {
+      display: inline-block;
+      min-width: 84px;
+      padding: 1px 8px;
+      border-bottom: 2px solid var(--blue-main);
+      color: var(--blue-dark);
+      font-weight: 700;
+      text-align: center;
+      background: var(--blue-bg);
+      border-radius: 6px 6px 0 0;
+    }
+
+    /* Verb Table Row Cards (Part C) */
+    .vt-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .vt-base-word {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      background: var(--blue-bg);
+      padding: 2px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--blue-border);
+    }
+
+    .vt-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .vt-col label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    /* Inline Passage Styling (Part B FIB, Part E1, Part F) */
+    .passage-box {
+      background: #f8fdfb;
+      border: 1.5px solid var(--mint-border);
+      border-radius: var(--radius-md);
+      padding: 15px 14px;
+      font-size: 15.5px;
+      line-height: 2.45;
+      color: var(--text-main);
+    }
+
+    .passage-box p {
+      margin: 0 0 12px;
+    }
+
+    .passage-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .inline-slot {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      vertical-align: baseline;
+      max-width: 100%;
+      flex-wrap: nowrap;
+    }
+
+    .slot-num {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--blue-dark);
+      background: var(--blue-bg);
+      padding: 1px 6px;
+      border-radius: 6px;
+      line-height: 1.4;
+    }
+
+    .passage-input {
+      width: 132px;
+      min-width: 96px;
+      max-width: 100%;
+      height: 40px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 16px;
+      outline: none;
+    }
+
+    .passage-input.narrow {
+      width: 92px;
+      min-width: 78px;
+    }
+
+    .passage-input:focus {
+      border-color: var(--blue-main);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+    }
+
+    .slot-hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* =====================================================================
+       6. Feedback, Explanations & QNA Self-Check Buttons
+       ===================================================================== */
+    .feedback-box {
+      display: none;
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 14px;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .fb-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 7px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .status-badge.ok {
+      background: var(--mint-bg);
+      color: var(--mint-dark);
+      border: 1px solid var(--mint-border);
+    }
+
+    .status-badge.err {
+      background: var(--rose-bg);
+      color: var(--rose-dark);
+      border: 1px solid var(--rose-border);
+    }
+
+    .status-badge.blank {
+      background: var(--amber-bg);
+      color: var(--amber-dark);
+      border: 1px solid var(--amber-border);
+    }
+
+    .std-ans {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--mint-dark);
+      word-break: break-word;
+    }
+
+    .user-ans-tag {
+      font-size: 13px;
+      color: var(--rose-dark);
+      word-break: break-word;
+    }
+
+    .exp-box {
+      background: #ffffff;
+      border-left: 3.5px solid var(--blue-main);
+      padding: 7px 10px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13.5px;
+      color: var(--text-sub);
+      line-height: 1.55;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .exp-box strong {
+      color: var(--text-main);
+    }
+
+    .self-check-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-self-check {
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1.5px solid var(--border-light);
+      background: #f8fafc;
+      color: var(--text-sub);
+    }
+
+    .btn-self-check.active-ok {
+      background: var(--mint-main);
+      border-color: var(--mint-main);
+      color: #ffffff;
+    }
+
+    .btn-self-check.active-err {
+      background: var(--rose-main);
+      border-color: var(--rose-main);
+      color: #ffffff;
+    }
+
+    /* Section Footer Nav */
+    .section-footer-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 0 12px 14px;
+    }
+
+    .btn-sec-nav {
+      flex: 1;
+      min-height: 46px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: var(--text-main);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-sec-nav.primary {
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+      border-color: var(--blue-border);
+    }
+
+    .btn-sec-nav:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* =====================================================================
+       7. Sticky Bottom Thumb Action Bar (iOS & Android Safe Area)
+       ===================================================================== */
+    .bottom-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 45;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border-light);
+      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    }
+
+    .bottom-bar-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav-thumb {
+      min-height: 48px;
+      padding: 0 12px;
+      border-radius: 13px;
+      background: #f1f5f9;
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid #cbd5e1;
+      white-space: nowrap;
+    }
+
+    .btn-nav-thumb:disabled {
+      opacity: 0.4;
+    }
+
+    .btn-submit-main {
+      flex: 1;
+      min-height: 48px;
+      padding: 0 14px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--mint-main), var(--blue-main));
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      white-space: nowrap;
+    }
+
+    .btn-regrade-bar {
+      flex: 1;
+      min-height: 48px;
+      padding: 0 14px;
+      border-radius: 13px;
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+      border: 1.5px solid var(--blue-border);
+      font-size: 15px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* =====================================================================
+       8. Modals (Full Report & Confirm) & Toast
+       ===================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(15, 23, 42, 0.52);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .report-modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 540px;
+      width: 100%;
+      max-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.24);
+    }
+
+    .report-modal-head {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, var(--mint-bg), var(--blue-bg));
+      border-bottom: 1px solid var(--mint-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .report-modal-body {
+      padding: 14px 16px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+    }
+
+    .report-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .report-stat {
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .report-stat.mint {
+      background: var(--mint-bg);
+      border: 1px solid var(--mint-border);
+    }
+
+    .report-stat.blue {
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-border);
+    }
+
+    .report-stat-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    .report-stat-val {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    .report-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .report-row {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px 12px;
+      min-height: 52px;
+      border-radius: 12px;
+      border: 1px solid var(--border-light);
+      background: #f8fafc;
+      text-align: left;
+      width: 100%;
+    }
+
+    .report-row-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .report-row-bar {
+      height: 7px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .report-row-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .report-modal-foot {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-light);
+      background: #f8fafc;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .report-foot-btn {
+      flex: 1;
+      min-width: 118px;
+      min-height: 46px;
+      padding: 0 12px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 380px;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.22);
+    }
+
+    .modal-title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .modal-msg {
+      margin: 0 0 18px;
+      font-size: 14.5px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .modal-btn {
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .modal-btn.cancel {
+      background: #f1f5f9;
+      color: var(--text-sub);
+    }
+
+    .modal-btn.danger {
+      background: var(--rose-main);
+      color: #ffffff;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(84px + env(safe-area-inset-bottom));
+      transform: translateX(-50%) translateY(12px);
+      z-index: 65;
+      background: rgba(15, 23, 42, 0.92);
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      max-width: 92vw;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Header -->
+  <header class="top-header">
+    <div class="top-header-inner">
+      <div class="header-row">
+        <div class="brand">
+          <div class="brand-badge">F4</div>
+          <div class="brand-text">
+            <h1 class="brand-title">Form 4 Exam Revision 高一英語溫習工作紙</h1>
+            <div class="brand-sub">
+              <span>iOS / Android 離線版 • 分大題計分</span>
+              <span id="save-indicator" class="save-pill">✓ 已自動儲存</span>
+            </div>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="btn-mini btn-report" onclick="openReportModal()">成績報告</button>
+        </div>
+      </div>
+
+      <!-- Total Score Progress Summary Bar -->
+      <button type="button" class="summary-bar" onclick="openReportModal()">
+        <div class="summary-top-row">
+          <div class="summary-metrics">
+            <span id="summary-graded-text">已完成 0 / 8 大題</span>
+            <span id="summary-score-pill" class="summary-score-pill">累計總分 0 / 195</span>
+          </div>
+          <span class="summary-link">查看總覽 ▸</span>
+        </div>
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </button>
+
+      <!-- Horizontally Scrollable Section Tabs -->
+      <nav id="section-tabs" class="tabs-scroll" aria-label="章節分頁標籤"></nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+
+    <!-- Collapsible Student Info Card -->
+    <section class="card">
+      <button type="button" class="student-card-header" onclick="toggleStudentCard()">
+        <span id="student-summary-text">📝 學生資料 (姓名 / 學號 / 班別 / 日期)</span>
+        <span id="student-toggle-icon">展開 ▼</span>
+      </button>
+      <div id="student-card-body" class="student-card-body collapsed">
+        <div class="field-group">
+          <label for="student-name">姓名 Name</label>
+          <input type="text" id="student-name" class="text-input" placeholder="請輸入姓名" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="saveStudentInfo()" />
+        </div>
+        <div class="field-group">
+          <label for="student-no">學號 No.</label>
+          <input type="text" id="student-no" class="text-input" placeholder="例如：15" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="saveStudentInfo()" />
+        </div>
+        <div class="field-group">
+          <label for="student-class">班別 Class</label>
+          <input type="text" id="student-class" class="text-input" placeholder="例如：Form 4A" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="saveStudentInfo()" />
+        </div>
+        <div class="field-group">
+          <label for="student-date">日期 Date</label>
+          <input type="date" id="student-date" class="text-input" onchange="saveStudentInfo()" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Worksheet Container -->
+    <div id="worksheet-root"></div>
+
+  </main>
+
+  <!-- Sticky Bottom Thumb Action Bar -->
+  <div class="bottom-bar">
+    <div id="bottom-bar-inner" class="bottom-bar-inner"></div>
+  </div>
+
+  <!-- Overall Score Report Modal -->
+  <div id="report-modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true" onclick="if(event.target===this) closeReportModal()">
+    <div class="report-modal-box">
+      <div class="report-modal-head">
+        <div>
+          <h3 style="margin:0; font-size:17px; font-weight:800;">📊 全卷成績報告總覽</h3>
+          <div id="report-student-meta" style="font-size:12px; color:var(--text-sub); margin-top:2px;"></div>
+        </div>
+        <button type="button" class="btn-mini btn-report" onclick="closeReportModal()">關閉 ✕</button>
+      </div>
+      <div id="report-modal-body" class="report-modal-body"></div>
+      <div class="report-modal-foot">
+        <button type="button" class="report-foot-btn" style="background:var(--mint-main); color:#fff;" onclick="gradeAllSections()">一鍵批改全部大題</button>
+        <button type="button" class="report-foot-btn" style="background:var(--blue-bg); color:var(--blue-dark); border:1px solid var(--blue-border);" onclick="fillDemoCurrentSection(); closeReportModal();">示範填寫本大題</button>
+        <button type="button" class="report-foot-btn" style="background:var(--rose-bg); color:var(--rose-dark); border:1px solid var(--rose-border);" onclick="closeReportModal(); confirmResetAll();">全部重置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Confirm Modal -->
+  <div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <h3 id="modal-title" class="modal-title">提示</h3>
+      <p id="modal-msg" class="modal-msg"></p>
+      <div id="modal-actions" class="modal-actions"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script>
+    /* =====================================================================
+       Complete Dataset: Form 4 Exam Revision Worksheet (Parts A - H)
+       Total: 195 Points (40 + 10 + 84 + 6 + 18 + 10 + 7 + 20)
+       Part A strictly aligned to U2R1 40-word vocabulary sheet.
+       ===================================================================== */
+    const STORAGE_KEY = 'f4_exam_revision_u2r1_v2';
+
+    const WORKSHEET_DATA = [
+      /* -------------------------------------------------------------------
+         PART A: Vocabulary Translation (40 items strictly from U2R1 Vocab Sheet)
+         ------------------------------------------------------------------- */
+      {
+        id: 'A',
+        short: 'Part A',
+        label: '詞彙中譯英',
+        title: 'Part A: Vocabulary Translation 詞彙中譯英',
+        subtitle: '請嚴格依據《Unit 2 Reading 1 – Can we teach creative thinking in schools?》生字紙 40 個指定單詞作答（共 40 分）。',
+        type: 'vocab',
+        maxPoints: 40,
+        items: [
+          { id: 'A1', num: 1, zh: '鼓勵', accepted: ['encourage'], display: 'encourage', exp: '詞性：<strong>v.</strong>（動詞）。鼓勵某人做某事常用 encourage sb. to do sth.。' },
+          { id: 'A2', num: 2, zh: '開罐器', accepted: ['can opener'], display: 'can opener', exp: '詞性：<strong>n. phr.</strong>（名詞片語）。意為「開罐器」。' },
+          { id: 'A3', num: 3, zh: '測量', accepted: ['measure'], display: 'measure', exp: '詞性：<strong>v.</strong>（動詞）。意為「測量、衡量」。' },
+          { id: 'A4', num: 4, zh: '剩餘部分；休息', accepted: ['rest'], display: 'rest', exp: '詞性：<strong>n.</strong>（名詞）。可指「剩餘部分（the rest of...）」或「休息」。' },
+          { id: 'A5', num: 5, zh: '壁球場', accepted: ['racquetball court'], display: 'racquetball court', exp: '詞性：<strong>n. phr.</strong>（名詞片語）。生字紙指定詞彙為 <strong>racquetball court</strong>，請留意 racquetball 拼法。' },
+          { id: 'A6', num: 6, zh: '大學', accepted: ['college'], display: 'college', exp: '詞性：<strong>n.</strong>（名詞）。生字紙指定單詞為 <strong>college</strong>。' },
+          { id: 'A7', num: 7, zh: '戰爭', accepted: ['war'], display: 'war', exp: '詞性：<strong>n.</strong>（名詞）。意為「戰爭」。' },
+          { id: 'A8', num: 8, zh: '證明', accepted: ['prove'], display: 'prove', exp: '詞性：<strong>v.</strong>（動詞）。意為「證明」。' },
+          { id: 'A9', num: 9, zh: '方法', accepted: ['way'], display: 'way', exp: '詞性：<strong>n.</strong>（名詞）。生字紙指定單詞為 <strong>way</strong>（如 in new ways）。' },
+          { id: 'A10', num: 10, zh: '知識', accepted: ['knowledge'], display: 'knowledge', exp: '詞性：<strong>n.</strong>（不可數名詞）。意為「知識」，不可加 s。' },
+          { id: 'A11', num: 11, zh: '一直', accepted: ['all the time'], display: 'all the time', exp: '詞性：<strong>phr.</strong>（片語）。生字紙指定片語為 <strong>all the time</strong>。' },
+          { id: 'A12', num: 12, zh: '可能的', accepted: ['possible'], display: 'possible', exp: '詞性：<strong>adj.</strong>（形容詞）。意為「可能的」。' },
+          { id: 'A13', num: 13, zh: '形容', accepted: ['describe'], display: 'describe', exp: '詞性：<strong>v.</strong>（動詞）。意為「形容、描述」。' },
+          { id: 'A14', num: 14, zh: '數；計算', accepted: ['count'], display: 'count', exp: '詞性：<strong>v.</strong>（動詞）。意為「數；計算」。' },
+          { id: 'A15', num: 15, zh: '專注於', accepted: ['focus on'], display: 'focus on', exp: '詞性：<strong>phr. v.</strong>（動詞片語）。生字紙指定片語為 <strong>focus on</strong>。' },
+          { id: 'A16', num: 16, zh: '務農', accepted: ['farming'], display: 'farming', exp: '詞性：<strong>n.</strong>（名詞）。生字紙指定詞形為 <strong>farming</strong>。' },
+          { id: 'A17', num: 17, zh: '絕對地', accepted: ['absolutely'], display: 'absolutely', exp: '詞性：<strong>adv.</strong>（副詞）。生字紙指定單詞為 <strong>absolutely</strong>。' },
+          { id: 'A18', num: 18, zh: '足夠', accepted: ['enough'], display: 'enough', exp: '詞性：<strong>adv.</strong>（副詞）。修飾形容詞時置於其後，如 big enough。' },
+          { id: 'A19', num: 19, zh: '合乎邏輯的', accepted: ['logical'], display: 'logical', exp: '詞性：<strong>adj.</strong>（形容詞）。如 logical thinking（邏輯思維）。' },
+          { id: 'A20', num: 20, zh: '除了…之外', accepted: ['in addition to'], display: 'in addition to', exp: '詞性：<strong>prep. phr.</strong>（介系詞片語）。生字紙指定片語為 <strong>in addition to</strong>（後接名詞或 V-ing）。' },
+          { id: 'A21', num: 21, zh: '複雜的', accepted: ['complicated'], display: 'complicated', exp: '詞性：<strong>adj.</strong>（形容詞）。生字紙指定單詞為 <strong>complicated</strong>。' },
+          { id: 'A22', num: 22, zh: '原因', accepted: ['reason'], display: 'reason', exp: '詞性：<strong>n.</strong>（名詞）。意為「原因、理由」。' },
+          { id: 'A23', num: 23, zh: '…的數量', accepted: ['an amount of'], display: 'an amount of', exp: '詞性：<strong>det.</strong>（限定詞）。生字紙指定片語為 <strong>an amount of</strong>（修飾不可數名詞的數量）。' },
+          { id: 'A24', num: 24, zh: '意思', accepted: ['meaning'], display: 'meaning', exp: '詞性：<strong>n.</strong>（名詞）。意為「意思、含義」。' },
+          { id: 'A25', num: 25, zh: '評分；分數', accepted: ['grade'], display: 'grade', exp: '詞性：<strong>v. / n.</strong>（動詞／名詞）。生字紙指定單詞為 <strong>grade</strong>（給…評分；分數）。' },
+          { id: 'A26', num: 26, zh: '導致；造成', accepted: ['result in'], display: 'result in', exp: '詞性：<strong>phr. v.</strong>（動詞片語）。生字紙指定片語為 <strong>result in</strong>（導致、結果造成）。' },
+          { id: 'A27', num: 27, zh: '任務', accepted: ['task'], display: 'task', exp: '詞性：<strong>n.</strong>（名詞）。意為「任務」。' },
+          { id: 'A28', num: 28, zh: '小說', accepted: ['novel'], display: 'novel', exp: '詞性：<strong>n.</strong>（名詞）。意為「小說」。' },
+          { id: 'A29', num: 29, zh: '冰箱', accepted: ['refrigerator'], display: 'refrigerator', exp: '詞性：<strong>n.</strong>（名詞）。生字紙指定單詞為完整拼法 <strong>refrigerator</strong>。' },
+          { id: 'A30', num: 30, zh: '有創意的', accepted: ['creative'], display: 'creative', exp: '詞性：<strong>adj.</strong>（形容詞）。如 creative thinking（創意思維）。' },
+          { id: 'A31', num: 31, zh: '準備', accepted: ['prepare'], display: 'prepare', exp: '詞性：<strong>v.</strong>（動詞）。意為「準備」。' },
+          { id: 'A32', num: 32, zh: '討論', accepted: ['discuss'], display: 'discuss', exp: '詞性：<strong>v.</strong>（及物動詞）。意為「討論」，後面直接接受詞不加 about。' },
+          { id: 'A33', num: 33, zh: '著名的', accepted: ['well-known', 'well known'], display: 'well-known', exp: '詞性：<strong>adj.</strong>（形容詞）。生字紙指定單詞為 <strong>well-known</strong>（系統容錯 well known）。' },
+          { id: 'A34', num: 34, zh: '表單', accepted: ['list'], display: 'list', exp: '詞性：<strong>n.</strong>（名詞）。生字紙指定單詞為 <strong>list</strong>（表單、清單）。' },
+          { id: 'A35', num: 35, zh: '傳統的', accepted: ['traditional'], display: 'traditional', exp: '詞性：<strong>adj.</strong>（形容詞）。如 traditional schools（傳統學校）。' },
+          { id: 'A36', num: 36, zh: '事實', accepted: ['fact'], display: 'fact', exp: '詞性：<strong>n.</strong>（名詞）。意為「事實」。' },
+          { id: 'A37', num: 37, zh: '相反', accepted: ['in contrast'], display: 'in contrast', exp: '詞性：<strong>prep. phr.</strong>（介系詞片語）。生字紙指定片語為 <strong>in contrast</strong>（相比之下；相反）。' },
+          { id: 'A38', num: 38, zh: '原先的', accepted: ['original'], display: 'original', exp: '詞性：<strong>adj.</strong>（形容詞）。意為「原先的；原創的」。' },
+          { id: 'A39', num: 39, zh: '熱門歌曲', accepted: ['hit songs'], display: 'hit songs', exp: '詞性：<strong>n. phr.</strong>（名詞片語）。生字紙指定詞形為複數 <strong>hit songs</strong>。' },
+          { id: 'A40', num: 40, zh: '解決', accepted: ['solve'], display: 'solve', exp: '詞性：<strong>v.</strong>（動詞）。意為「解決（問題等）」。' }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART B: U2R1 Post Reading (4 MCQ + 3 FIB + 3 QNA = 10 pts)
+         ------------------------------------------------------------------- */
+      {
+        id: 'B',
+        short: 'Part B',
+        label: 'U2R1 閱讀理解',
+        title: 'Part B: U2R1 Post Reading 閱讀理解',
+        subtitle: '包含選擇題 (4 題)、段落填空 (3 題) 及簡答題 (3 題)，共 10 分。簡答題批改後支援「算我答對 / 算我答錯」自評微調。',
+        type: 'reading',
+        maxPoints: 10,
+        mcqs: [
+          {
+            id: 'B_M1', num: 1,
+            prompt: 'What is the main idea of the passage? <strong>(5%)</strong>',
+            options: {
+              A: 'Creative thinking is only useful for famous inventors.',
+              B: 'Schools should teach creative thinking to prepare students for real life.',
+              C: 'Schools should stop teaching logical thinking.',
+              D: 'Creative thinking can only be learned outside school.'
+            },
+            answer: 'B',
+            exp: '文章主旨強調學校應教授創意思維，幫助學生為現實生活做好準備（prepare students for real life）。'
+          },
+          {
+            id: 'B_M2', num: 2,
+            prompt: 'Which activity is an example of creative thinking? <strong>(5%)</strong>',
+            options: {
+              A: 'Measuring the exact size of a classroom.',
+              B: 'Remembering important dates in history.',
+              C: 'Copying facts from a history textbook.',
+              D: 'Describing a room as big enough for a band to practise.'
+            },
+            answer: 'D',
+            exp: '把房間形容為「足夠讓一支樂隊排練」，跳脫單純的精確測量或死記硬背，屬於創意思維的例子。'
+          },
+          {
+            id: 'B_M3', num: 3,
+            prompt: 'What is true about the creative people mentioned at the beginning of the passage? <strong>(5%)</strong>',
+            options: {
+              A: 'They are all famous around the world.',
+              B: 'They all finished college.',
+              C: 'They all did something important.',
+              D: 'They all invented useful machines.'
+            },
+            answer: 'C',
+            exp: '文章開頭提到的創意人物不一定全球聞名、讀完大學或發明機器，但他們都做出了重要的事情／貢獻。'
+          },
+          {
+            id: 'B_M4', num: 4,
+            prompt: 'Why do traditional schools prefer to teach logical thinking and facts? <strong>(5%)</strong>',
+            options: {
+              A: 'They are more interesting than creative thinking.',
+              B: 'They are easier to measure.',
+              C: 'They are the only skills students need.',
+              D: 'They help students become famous.'
+            },
+            answer: 'B',
+            exp: '傳統學校偏好教授邏輯思維與事實，主要是因為它們有標準答案，更容易測量與評分（easier to measure）。'
+          }
+        ],
+        fibs: [
+          {
+            id: 'B_F1', num: 5,
+            prompt: '(5) Traditional schools usually ______ teaching logical thinking and facts...',
+            accepted: ['focus on'],
+            display: 'focus on',
+            exp: '<strong>focus on + V-ing</strong> 表示「專注於…」。'
+          },
+          {
+            id: 'B_F2', num: 6,
+            prompt: '(6) In contrast, creative thinking produces ______ answers that others do not usually think of.',
+            accepted: ['original'],
+            display: 'original',
+            exp: '標準答案為 <strong>original</strong>（原創的、獨具匠心的答案）。'
+          },
+          {
+            id: 'B_F3', num: 7,
+            prompt: '(7) It means putting different ideas together in new ______.',
+            accepted: ['ways'],
+            display: 'ways',
+            exp: '固定搭配 <strong>in new ways</strong>（以新的方法），注意使用複數 ways。'
+          }
+        ],
+        qnas: [
+          {
+            id: 'B_Q1', num: 8,
+            prompt: 'Why is measuring creative thinking difficult?',
+            keywords: ['no single', 'no one', 'not have one', 'no right', 'different answer', 'original', 'hard to grade', 'objectively', 'many answers', 'no standard'],
+            model: 'Because creative thinking does not have one single correct answer / it is hard to grade original ideas objectively.',
+            exp: '創意思維沒有單一的標準正確答案，因此很難客觀地對原創想法進行評分與測量。'
+          },
+          {
+            id: 'B_Q2', num: 9,
+            prompt: 'Why is teaching logical thinking and facts still important?',
+            keywords: ['everyday', 'daily life', 'real life', 'basic knowledge', 'knowledge', 'solve', 'useful', 'need', 'important'],
+            model: 'Because students still need logical thinking and facts to solve everyday problems and build basic knowledge.',
+            exp: '學生依然需要邏輯思維與事實知識來解決日常生活中的問題並建立基礎知識。'
+          },
+          {
+            id: 'B_Q3', num: 10,
+            prompt: "What does 'creative thinking' actually mean?",
+            keywords: ['different ideas', 'new ways', 'putting'],
+            model: 'It means putting different ideas together in new ways (to produce original answers).',
+            exp: '創意思維的實際意義是「以新的方法將不同的想法結合在一起」（putting different ideas together in new ways）。'
+          }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART C: Irregular Verb Table (42 verbs x 2 blanks = 84 pts)
+         ------------------------------------------------------------------- */
+      {
+        id: 'C',
+        short: 'Part C',
+        label: '不規則動詞表',
+        title: 'Part C: Verb Table 不規則動詞表 (VT)',
+        subtitle: '請填寫 42 個動詞的 Past Simple（過去式）與 Past Participle（過去分詞），每格 1 分，共 84 分。',
+        type: 'vt',
+        maxPoints: 84,
+        verbs: [
+          { num: 1, base: 'find', ps: ['found'], pp: ['found'], dPs: 'found', dPp: 'found', exp: 'ABB 型：find – found – found。' },
+          { num: 2, base: 'fit', ps: ['fit', 'fitted'], pp: ['fit', 'fitted'], dPs: 'fit / fitted', dPp: 'fit / fitted', exp: 'AAA 型 fit – fit – fit 或規則變化 fitted – fitted 皆可。' },
+          { num: 3, base: 'flee', ps: ['fled'], pp: ['fled'], dPs: 'fled', dPp: 'fled', exp: 'ABB 型（逃離）：flee – fled – fled。' },
+          { num: 4, base: 'fling', ps: ['flung'], pp: ['flung'], dPs: 'flung', dPp: 'flung', exp: 'ABB 型（猛擲）：fling – flung – flung。' },
+          { num: 5, base: 'fly', ps: ['flew'], pp: ['flown'], dPs: 'flew', dPp: 'flown', exp: 'ABC 型：fly – flew – flown。' },
+          { num: 6, base: 'forbid', ps: ['forbade', 'forbad'], pp: ['forbidden'], dPs: 'forbade / forbad', dPp: 'forbidden', exp: 'ABC 型（禁止）：forbid – forbade – forbidden（過去分詞雙寫 d）。' },
+          { num: 7, base: 'forecast', ps: ['forecast', 'forecasted'], pp: ['forecast', 'forecasted'], dPs: 'forecast / forecasted', dPp: 'forecast / forecasted', exp: 'AAA 型 forecast – forecast – forecast（亦接受 forecasted）。' },
+          { num: 8, base: 'forget', ps: ['forgot'], pp: ['forgotten', 'forgot'], dPs: 'forgot', dPp: 'forgotten / forgot', exp: 'ABC 型：forget – forgot – forgotten（美式口語亦可見 forgot）。' },
+          { num: 9, base: 'forgive', ps: ['forgave'], pp: ['forgiven'], dPs: 'forgave', dPp: 'forgiven', exp: 'ABC 型（原諒）：forgive – forgave – forgiven。' },
+          { num: 10, base: 'freeze', ps: ['froze'], pp: ['frozen'], dPs: 'froze', dPp: 'frozen', exp: 'ABC 型（結冰）：freeze – froze – frozen。' },
+          { num: 11, base: 'get', ps: ['got'], pp: ['got', 'gotten'], dPs: 'got', dPp: 'got / gotten', exp: '英式常用 got – got；美式過去分詞亦常用 gotten。' },
+          { num: 12, base: 'give', ps: ['gave'], pp: ['given'], dPs: 'gave', dPp: 'given', exp: 'ABC 型：give – gave – given。' },
+          { num: 13, base: 'go', ps: ['went'], pp: ['gone'], dPs: 'went', dPp: 'gone', exp: 'ABC 型：go – went – gone。' },
+          { num: 14, base: 'grow', ps: ['grew'], pp: ['grown'], dPs: 'grew', dPp: 'grown', exp: 'ABC 型：grow – grew – grown。' },
+          { num: 15, base: 'hang', ps: ['hung', 'hanged'], pp: ['hung', 'hanged'], dPs: 'hung / hanged', dPp: 'hung / hanged', exp: '「懸掛」用 <strong>hung – hung</strong>；「絞刑」用 <strong>hanged – hanged</strong>。' },
+          { num: 16, base: 'have', ps: ['had'], pp: ['had'], dPs: 'had', dPp: 'had', exp: 'ABB 型：have – had – had。' },
+          { num: 17, base: 'hear', ps: ['heard'], pp: ['heard'], dPs: 'heard', dPp: 'heard', exp: 'ABB 型：hear – heard – heard。' },
+          { num: 18, base: 'hide', ps: ['hid'], pp: ['hidden'], dPs: 'hid', dPp: 'hidden', exp: 'ABC 型：hide – hid – hidden（過去分詞雙寫 d）。' },
+          { num: 19, base: 'hit', ps: ['hit'], pp: ['hit'], dPs: 'hit', dPp: 'hit', exp: 'AAA 型：hit – hit – hit。' },
+          { num: 20, base: 'hold', ps: ['held'], pp: ['held'], dPs: 'held', dPp: 'held', exp: 'ABB 型：hold – held – held。' },
+          { num: 21, base: 'hurt', ps: ['hurt'], pp: ['hurt'], dPs: 'hurt', dPp: 'hurt', exp: 'AAA 型：hurt – hurt – hurt。' },
+          { num: 22, base: 'keep', ps: ['kept'], pp: ['kept'], dPs: 'kept', dPp: 'kept', exp: 'ABB 型：keep – kept – kept。' },
+          { num: 23, base: 'kneel', ps: ['knelt', 'kneeled'], pp: ['knelt', 'kneeled'], dPs: 'knelt / kneeled', dPp: 'knelt / kneeled', exp: '跪下：英式常用 <strong>knelt – knelt</strong>，亦接受 kneeled。' },
+          { num: 24, base: 'knit', ps: ['knit', 'knitted'], pp: ['knit', 'knitted'], dPs: 'knit / knitted', dPp: 'knit / knitted', exp: '編織：knit – knit – knit 或 knitted – knitted 皆可。' },
+          { num: 25, base: 'know', ps: ['knew'], pp: ['known'], dPs: 'knew', dPp: 'known', exp: 'ABC 型：know – knew – known。' },
+          { num: 26, base: 'lay', ps: ['laid'], pp: ['laid'], dPs: 'laid', dPp: 'laid', exp: '<strong>lay</strong>（放置／產卵）→ <strong>laid – laid</strong>，勿與 lie（躺下）混淆。' },
+          { num: 27, base: 'lead', ps: ['led'], pp: ['led'], dPs: 'led', dPp: 'led', exp: 'ABB 型（帶領）：lead – led – led。' },
+          { num: 28, base: 'lean', ps: ['leant', 'leaned'], pp: ['leant', 'leaned'], dPs: 'leant / leaned', dPp: 'leant / leaned', exp: '倚靠：leant – leant（英式）或 leaned – leaned（美式）。' },
+          { num: 29, base: 'leap', ps: ['leapt', 'leaped'], pp: ['leapt', 'leaped'], dPs: 'leapt / leaped', dPp: 'leapt / leaped', exp: '跳躍：leapt – leapt 或 leaped – leaped。' },
+          { num: 30, base: 'learn', ps: ['learnt', 'learned'], pp: ['learnt', 'learned'], dPs: 'learnt / learned', dPp: 'learnt / learned', exp: '學習：learnt – learnt（英式）或 learned – learned（美式）。' },
+          { num: 31, base: 'leave', ps: ['left'], pp: ['left'], dPs: 'left', dPp: 'left', exp: 'ABB 型：leave – left – left。' },
+          { num: 32, base: 'lend', ps: ['lent'], pp: ['lent'], dPs: 'lent', dPp: 'lent', exp: 'ABB 型（借出）：lend – lent – lent。' },
+          { num: 33, base: 'let', ps: ['let'], pp: ['let'], dPs: 'let', dPp: 'let', exp: 'AAA 型：let – let – let。' },
+          { num: 34, base: 'light', ps: ['lit', 'lighted'], pp: ['lit', 'lighted'], dPs: 'lit / lighted', dPp: 'lit / lighted', exp: '點亮：lit – lit（常用）或 lighted – lighted。' },
+          { num: 35, base: 'lose', ps: ['lost'], pp: ['lost'], dPs: 'lost', dPp: 'lost', exp: 'ABB 型：lose – lost – lost。' },
+          { num: 36, base: 'make', ps: ['made'], pp: ['made'], dPs: 'made', dPp: 'made', exp: 'ABB 型：make – made – made。' },
+          { num: 37, base: 'mean', ps: ['meant'], pp: ['meant'], dPs: 'meant', dPp: 'meant', exp: 'ABB 型：mean – meant – meant。' },
+          { num: 38, base: 'meet', ps: ['met'], pp: ['met'], dPs: 'met', dPp: 'met', exp: 'ABB 型：meet – met – met。' },
+          { num: 39, base: 'mow', ps: ['mowed'], pp: ['mown', 'mowed'], dPs: 'mowed', dPp: 'mown / mowed', exp: '割草：mow – mowed – mown（過去分詞亦接受 mowed）。' },
+          { num: 40, base: 'pay', ps: ['paid'], pp: ['paid'], dPs: 'paid', dPp: 'paid', exp: 'ABB 型：pay – paid – paid。' },
+          { num: 41, base: 'prove', ps: ['proved'], pp: ['proven', 'proved'], dPs: 'proved', dPp: 'proven / proved', exp: '證明：prove – proved – proven（亦接受 proved）。' },
+          { num: 42, base: 'lie', ps: ['lay', 'lied'], pp: ['lain', 'lied'], dPs: 'lay (躺) / lied (說謊)', dPp: 'lain (躺) / lied (說謊)', exp: '請特別區分：解作「<strong>躺下／位於</strong>」時為不規則變化 <strong>lie – lay – lain</strong>；解作「<strong>說謊</strong>」時為規則變化 <strong>lie – lied – lied</strong>。' }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART D: Passive Voice (6 sentences = 6 pts)
+         ------------------------------------------------------------------- */
+      {
+        id: 'D',
+        short: 'Part D',
+        label: '被動語態',
+        title: 'Part D: Passive Voice 被動語態改寫',
+        subtitle: 'Rewrite the following sentences into the passive voice. (支援雙賓語兩種正確寫法，共 6 分)',
+        type: 'textarea_list',
+        maxPoints: 6,
+        items: [
+          {
+            id: 'D1', num: 1,
+            prompt: 'The school librarian lends students English books every week.',
+            accepted: [
+              'Students are lent English books by the school librarian every week.',
+              'English books are lent to students by the school librarian every week.'
+            ],
+            display: 'Students are lent English books by the school librarian every week. / English books are lent to students by the school librarian every week.',
+            exp: '一般現在時被動語態（<strong>am/is/are + p.p.</strong>）。lend 為雙賓動詞，把「物」提前作主語時，人前須加 <strong>to</strong>。'
+          },
+          {
+            id: 'D2', num: 2,
+            prompt: 'The workers were painting the walls of the school hall yesterday afternoon.',
+            accepted: [
+              'The walls of the school hall were being painted by the workers yesterday afternoon.'
+            ],
+            display: 'The walls of the school hall were being painted by the workers yesterday afternoon.',
+            exp: '過去進行時被動語態結構為 <strong>was/were + being + p.p.</strong>，主語 the walls 為複數，故用 were being painted。'
+          },
+          {
+            id: 'D3', num: 3,
+            prompt: 'The company has offered my brother a full-time job.',
+            accepted: [
+              'My brother has been offered a full-time job by the company.',
+              'A full-time job has been offered to my brother by the company.'
+            ],
+            display: 'My brother has been offered a full-time job by the company. / A full-time job has been offered to my brother by the company.',
+            exp: '現在完成時被動語態結構為 <strong>has/have + been + p.p.</strong>。offer 為雙賓動詞，把「物」提前時，人前須加 <strong>to</strong>。'
+          },
+          {
+            id: 'D4', num: 4,
+            prompt: 'Someone stole several bicycles outside the shopping centre last night.',
+            accepted: [
+              'Several bicycles were stolen outside the shopping centre last night.',
+              'Several bicycles were stolen by someone outside the shopping centre last night.',
+              'Several bicycles were stolen outside the shopping centre by someone last night.'
+            ],
+            display: 'Several bicycles were stolen outside the shopping centre last night.',
+            exp: '一般過去時被動語態（<strong>was/were + p.p.</strong>），steal 的過去分詞為 stolen；主語 someone 不明確，通常省略 by someone。'
+          },
+          {
+            id: 'D5', num: 5,
+            prompt: 'The students are preparing the decorations for the school anniversary.',
+            accepted: [
+              'The decorations for the school anniversary are being prepared by the students.',
+              'The decorations are being prepared for the school anniversary by the students.',
+              'The decorations are being prepared by the students for the school anniversary.'
+            ],
+            display: 'The decorations for the school anniversary are being prepared by the students.',
+            exp: '現在進行時被動語態結構為 <strong>am/is/are + being + p.p.</strong>。'
+          },
+          {
+            id: 'D6', num: 6,
+            prompt: 'The teacher had given the students clear instructions before the activity began.',
+            accepted: [
+              'The students had been given clear instructions by the teacher before the activity began.',
+              'Clear instructions had been given to the students by the teacher before the activity began.'
+            ],
+            display: 'The students had been given clear instructions by the teacher before the activity began. / Clear instructions had been given to the students by the teacher before the activity began.',
+            exp: '過去完成時被動語態結構為 <strong>had + been + p.p.</strong>。give 的過去分詞為 given，把 clear instructions 提前時，students 前須加 <strong>to</strong>。'
+          }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART E: Participle Adjectives (8) & Clauses (10) = 18 pts
+         ------------------------------------------------------------------- */
+      {
+        id: 'E',
+        short: 'Part E',
+        label: '分詞形容詞與子句',
+        title: 'Part E: Participle Adjectives & Clauses',
+        subtitle: 'Section 1 分詞形容詞短文填空 (8 分)；Section 2 分詞子句改寫 (10 分)，共 18 分。',
+        type: 'participles',
+        maxPoints: 18,
+        passageTokens: [
+          { text: 'Last Friday, our school held a talent show. Jenny felt ' },
+          { id: 'E_P1', num: 1, hint: '(worry)' },
+          { text: ' because she had never performed in front of so many people before. When she arrived at the school hall, she noticed a ' },
+          { id: 'E_P2', num: 2, hint: '(break)' },
+          { text: ' chair near the stage. She also saw a group of ' },
+          { id: 'E_P3', num: 3, hint: '(dance)' },
+          { text: ' students practicing in the hall. The first performance was rather ' },
+          { id: 'E_P4', num: 4, hint: '(bore)' },
+          { text: ', and some students began talking to each other. Meanwhile, Jenny waited behind a ' },
+          { id: 'E_P5', num: 5, hint: '(close)' },
+          { text: ' door for her turn. After her performance, Jenny was ' },
+          { id: 'E_P6', num: 6, hint: '(surprise)' },
+          { text: ' to hear the audience cheering loudly. She saw her ' },
+          { id: 'E_P7', num: 7, hint: '(smile)' },
+          { text: ' parents sitting in the front row. It was an ' },
+          { id: 'E_P8', num: 8, hint: '(excite)' },
+          { text: ' experience that Jenny would never forget.' }
+        ],
+        passageItems: [
+          { id: 'E_P1', num: 1, prompt: '(1) Jenny felt ____ (worry)', accepted: ['worried'], display: 'worried', exp: '形容人的感受「感到擔心的」，用過去分詞 <strong>-ed (worried)</strong>。' },
+          { id: 'E_P2', num: 2, prompt: '(2) a ____ (break) chair', accepted: ['broken'], display: 'broken', exp: '形容椅子「損壞的、破的」被動／完成狀態，用過去分詞 <strong>broken</strong>。' },
+          { id: 'E_P3', num: 3, prompt: '(3) a group of ____ (dance) students', accepted: ['dancing'], display: 'dancing', exp: '形容「正在跳舞的」學生（主動進行），用現在分詞 <strong>dancing</strong>。' },
+          { id: 'E_P4', num: 4, prompt: '(4) The first performance was rather ____ (bore)', accepted: ['boring'], display: 'boring', exp: '形容表演「令人無聊的」事物特質，用現在分詞 <strong>-ing (boring)</strong>。' },
+          { id: 'E_P5', num: 5, prompt: '(5) behind a ____ (close) door', accepted: ['closed'], display: 'closed', exp: '形容「關著的」門（被動／完成狀態），用過去分詞 <strong>closed</strong>。' },
+          { id: 'E_P6', num: 6, prompt: '(6) Jenny was ____ (surprise)', accepted: ['surprised'], display: 'surprised', exp: '形容 Jenny「感到驚訝的」，用過去分詞 <strong>-ed (surprised)</strong>。' },
+          { id: 'E_P7', num: 7, prompt: '(7) her ____ (smile) parents', accepted: ['smiling'], display: 'smiling', exp: '形容「面帶微笑的」父母（主動狀態），用現在分詞 <strong>smiling</strong>。' },
+          { id: 'E_P8', num: 8, prompt: '(8) an ____ (excite) experience', accepted: ['exciting'], display: 'exciting', exp: '形容「令人興奮的」經歷，用現在分詞 <strong>-ing (exciting)</strong>。' }
+        ],
+        rewrites: [
+          {
+            id: 'E_R1', num: 1,
+            prompt: 'As Lucy does not know the answer, she remains silent.',
+            accepted: ['Not knowing the answer, Lucy remains silent.'],
+            display: 'Not knowing the answer, Lucy remains silent.',
+            exp: '主動否定分詞子句：否定詞 <strong>Not</strong> 置於現在分詞 knowing 之前，並將主語 Lucy 移至主句。'
+          },
+          {
+            id: 'E_R2', num: 2,
+            prompt: 'Because the building was damaged by the storm, it was closed to the public.',
+            accepted: [
+              'Damaged by the storm, the building was closed to the public.',
+              'Having been damaged by the storm, the building was closed to the public.',
+              'Being damaged by the storm, the building was closed to the public.'
+            ],
+            display: 'Damaged by the storm, the building was closed to the public.',
+            exp: '被動關係直接用過去分詞 <strong>Damaged</strong> 開頭（亦可容錯 Having been damaged），並以 the building 取代主句的 it。'
+          },
+          {
+            id: 'E_R3', num: 3,
+            prompt: 'While Jason was playing basketball, he injured his ankle.',
+            accepted: [
+              'While playing basketball, Jason injured his ankle.',
+              'Playing basketball, Jason injured his ankle.'
+            ],
+            display: 'While playing basketball, Jason injured his ankle. / Playing basketball, Jason injured his ankle.',
+            exp: '可保留連接詞 <strong>While</strong> 表達「在打籃球期間」，後接主動現在分詞 playing。'
+          },
+          {
+            id: 'E_R4', num: 4,
+            prompt: 'Because Peter had not brought his textbook, he had to share one with his classmate.',
+            accepted: [
+              'Not having brought his textbook, Peter had to share one with his classmate.',
+              'Having not brought his textbook, Peter had to share one with his classmate.'
+            ],
+            display: 'Not having brought his textbook, Peter had to share one with his classmate.',
+            exp: '動作「沒帶課本」發生在主句之前（過去完成時），故用完成分詞否定式 <strong>Not having + p.p.</strong>。'
+          },
+          {
+            id: 'E_R5', num: 5,
+            prompt: 'As David was not invited to the party, he decided to stay at home.',
+            accepted: [
+              'Not invited to the party, David decided to stay at home.',
+              'Not being invited to the party, David decided to stay at home.',
+              'Not having been invited to the party, David decided to stay at home.'
+            ],
+            display: 'Not invited to the party, David decided to stay at home.',
+            exp: '被動否定分詞子句，將 <strong>Not</strong> 置於過去分詞 invited 之前（亦接受 Not being invited / Not having been invited）。'
+          },
+          {
+            id: 'E_R6', num: 6,
+            prompt: 'When Emily entered the classroom, she noticed a message on the whiteboard.',
+            accepted: [
+              'Entering the classroom, Emily noticed a message on the whiteboard.',
+              'When entering the classroom, Emily noticed a message on the whiteboard.'
+            ],
+            display: 'Entering the classroom, Emily noticed a message on the whiteboard.',
+            exp: '主動動作相繼發生，用現在分詞 <strong>Entering</strong> 開頭（亦可保留 When）。'
+          },
+          {
+            id: 'E_R7', num: 7,
+            prompt: 'Because the school hall is being decorated, it is not open to students.',
+            accepted: ['Being decorated, the school hall is not open to students.'],
+            display: 'Being decorated, the school hall is not open to students.',
+            exp: '原句為現在進行被動（is being decorated），須保留 <strong>Being + p.p.</strong> 以強調「正在被裝修」。'
+          },
+          {
+            id: 'E_R8', num: 8,
+            prompt: 'After Helen had completed the report, she sent it to her teacher.',
+            accepted: [
+              'Having completed the report, Helen sent it to her teacher.',
+              'After completing the report, Helen sent it to her teacher.',
+              'After having completed the report, Helen sent it to her teacher.'
+            ],
+            display: 'Having completed the report, Helen sent it to her teacher. / After completing the report, Helen sent it to her teacher.',
+            exp: '動作先完成，可用完成分詞 <strong>Having completed</strong> 或保留連接詞 <strong>After completing</strong>。'
+          },
+          {
+            id: 'E_R9', num: 9,
+            prompt: 'When the book is translated into Chinese, it will attract more readers.',
+            accepted: [
+              'Translated into Chinese, the book will attract more readers.',
+              'When translated into Chinese, the book will attract more readers.'
+            ],
+            display: 'Translated into Chinese, the book will attract more readers.',
+            exp: '書本是「被翻譯」，用過去分詞 <strong>Translated</strong> 開頭（亦可保留 When）。'
+          },
+          {
+            id: 'E_R10', num: 10,
+            prompt: 'Before Daniel left the house, he checked all the windows.',
+            accepted: ['Before leaving the house, Daniel checked all the windows.'],
+            display: 'Before leaving the house, Daniel checked all the windows.',
+            exp: '必須保留連接詞 <strong>Before</strong> 以保持「離開前」的原意，後接現在分詞 leaving。'
+          }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART F: Mixed Tenses (10 items = 10 pts)
+         ------------------------------------------------------------------- */
+      {
+        id: 'F',
+        short: 'Part F',
+        label: '混合時態',
+        title: 'Part F: Mixed Tenses 混合時態',
+        subtitle: 'Complete the text with the correct form of the verbs in brackets. (第 6 題為雙格合算 1 分，共 10 分)',
+        type: 'tenses',
+        maxPoints: 10,
+        paragraphs: [
+          [
+            { text: 'Emily is a member of the school basketball team. She ' },
+            { id: 'F1', num: 1, hint: '(practise)' },
+            { text: ' basketball every afternoon. Her coach often ' },
+            { id: 'F2', num: 2, hint: '(encourage)' },
+            { text: ' her to work hard and improve her skills.' }
+          ],
+          [
+            { text: 'Two weeks ago, the coach ' },
+            { id: 'F3', num: 3, hint: '(announce)' },
+            { text: ' that there would be an important basketball match. Emily was excited about the news. Yesterday afternoon, while her teammates ' },
+            { id: 'F4', num: 4, hint: '(practise)' },
+            { text: ' in the school gym, Emily ' },
+            { id: 'F5', num: 5, hint: '(talk)' },
+            { text: ' to her coach about their plans for the match.' }
+          ],
+          [
+            { text: 'By the time the coach arrived at the gym this morning, the players ' },
+            { id: 'F6', num: 6, split: true, mid: 'already', hint: '(finish)' },
+            { text: ' their warm-up exercises. Everyone was ready for the match.' }
+          ],
+          [
+            { text: 'At the moment, Emily and her teammates ' },
+            { id: 'F7', num: 7, hint: '(discuss)' },
+            { text: ' their plans on the basketball court. Up to now, more than a hundred students ' },
+            { id: 'F8', num: 8, hint: '(arrive)' },
+            { text: ' at the gym, but the match still ' },
+            { id: 'F9', num: 9, hint: '(not / begin)' },
+            { text: '. Emily ' },
+            { id: 'F10', num: 10, hint: '(be)' },
+            { text: ' nervous since she woke up this morning.' }
+          ],
+          [
+            { text: 'Her coach says, “Believe in yourself and enjoy the game!”' }
+          ]
+        ],
+        items: [
+          { id: 'F1', num: 1, prompt: '(1) She ____ (practise) basketball every afternoon.', accepted: ['practises', 'practices'], display: 'practises / practices', exp: '時間標誌 <strong>every afternoon</strong> 表示日常習慣，第三人稱單數用一般現在時 practises（美式 practices 亦接受）。' },
+          { id: 'F2', num: 2, prompt: '(2) Her coach often ____ (encourage) her...', accepted: ['encourages'], display: 'encourages', exp: '<strong>often</strong> 表示經常性動作，主語 Her coach 為單數，用一般現在時 encourages。' },
+          { id: 'F3', num: 3, prompt: '(3) Two weeks ago, the coach ____ (announce)...', accepted: ['announced'], display: 'announced', exp: '<strong>Two weeks ago</strong> 為明確過去時間，用一般過去時 announced。' },
+          { id: 'F4', num: 4, prompt: '(4) Yesterday afternoon, while her teammates ____ (practise)...', accepted: ['were practising', 'were practicing'], display: 'were practising / were practicing', exp: '<strong>Yesterday afternoon</strong> 搭配 <strong>while</strong>，表示過去某段時間正在進行，用過去進行時 were practising。' },
+          { id: 'F5', num: 5, prompt: '(5) ...Emily ____ (talk) to her coach...', accepted: ['was talking', 'talked'], display: 'was talking / talked', exp: 'while 連接兩個同時進行的過去動作（was talking）或背景中的單次動作（talked），兩者皆可。' },
+          { id: 'F6', num: 6, split: true, prompt: '(6) By the time the coach arrived..., the players ____ already ____ (finish)...', acceptedA: ['had'], acceptedB: ['finished'], display: 'had ... already ... finished', exp: '<strong>By the time + 過去式（arrived）</strong> 表示在過去某時間前已經完成，用過去完成時 <strong>had + p.p.</strong>。' },
+          { id: 'F7', num: 7, prompt: '(7) At the moment, Emily and her teammates ____ (discuss)...', accepted: ['are discussing'], display: 'are discussing', exp: '<strong>At the moment</strong>（此刻）表示現在進行中，用現在進行時 are discussing。' },
+          { id: 'F8', num: 8, prompt: '(8) Up to now, more than a hundred students ____ (arrive)...', accepted: ['have arrived'], display: 'have arrived', exp: '<strong>Up to now</strong>（直到現在）為現在完成時標誌，主語複數用 have arrived。' },
+          { id: 'F9', num: 9, prompt: '(9) ...but the match still ____ (not / begin).', accepted: ['has not begun', "hasn't begun"], display: "has not begun / hasn't begun", exp: '表示「直到現在還未開始」，用現在完成時否定式；begin 的過去分詞為 <strong>begun</strong>。' },
+          { id: 'F10', num: 10, prompt: '(10) Emily ____ (be) nervous since she woke up this morning.', accepted: ['has been'], display: 'has been', exp: '<strong>since she woke up this morning</strong>（自今早醒來至今）用現在完成時 <strong>has been</strong>。' }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART G: Modal Verbs (7 items = 7 pts, tap pills)
+         ------------------------------------------------------------------- */
+      {
+        id: 'G',
+        short: 'Part G',
+        label: '情態動詞',
+        title: 'Part G: Modal Verbs 情態動詞',
+        subtitle: '點擊最適合的情態動詞大按鈕作答（免打字，共 7 分）。',
+        type: 'pills',
+        maxPoints: 7,
+        items: [
+          {
+            id: 'G1', num: 1,
+            before: 'If Kevin keeps taking English lessons, he',
+            after: 'speak English more fluently next year.',
+            choices: ['were allowed to', 'had to', 'will be able to'],
+            answer: 'will be able to',
+            exp: '搭配 <strong>next year</strong> 表達未來的能力，用 <strong>will be able to</strong>。'
+          },
+          {
+            id: 'G2', num: 2,
+            before: 'That man',
+            after: 'be our new English teacher. I saw his photo on the school website yesterday.',
+            choices: ['might not', 'must', 'cannot'],
+            answer: 'must',
+            exp: '有明確證據（昨天在學校網站看過照片），表示高度肯定推測「一定是」，用 <strong>must</strong>。'
+          },
+          {
+            id: 'G3', num: 3,
+            before: '"Excuse me, Miss Lee.',
+            after: 'I open the window? It is quite hot in here."',
+            choices: ['Must', 'Would', 'May'],
+            answer: 'May',
+            exp: '向老師禮貌請求許可「我可以…嗎？」，用 <strong>May I...</strong>。'
+          },
+          {
+            id: 'G4', num: 4,
+            before: 'Students',
+            after: 'bring lunch tomorrow because the school will provide free meals.',
+            choices: ['must not', 'cannot', 'do not have to'],
+            answer: 'do not have to',
+            exp: '學校提供免費餐點，所以「不需要／不必」帶午餐，用 <strong>do not have to</strong>；must not 表禁止。'
+          },
+          {
+            id: 'G5', num: 5,
+            before: 'It is getting dark. You',
+            after: 'go home now, or your parents will worry about you.',
+            choices: ['might', 'are able to', 'had better'],
+            answer: 'had better',
+            exp: '提出強烈建議「最好現在回家，否則…」，用 <strong>had better + 原形動詞</strong>。'
+          },
+          {
+            id: 'G6', num: 6,
+            before: 'I shouted at my little brother yesterday and made him cry. I',
+            after: 'spoken to him like that.',
+            choices: ['might not', 'should not have', 'do not have to'],
+            answer: 'should not have',
+            exp: '<strong>should not have + p.p.</strong> 表示對過去所做之事的懊悔「本不該那樣對他說話」。'
+          },
+          {
+            id: 'G7', num: 7,
+            before: 'Mary missed the school bus this morning. If she had got up earlier, she',
+            after: 'caught the bus.',
+            choices: ['would have', 'should not have', 'must have'],
+            answer: 'would have',
+            exp: '與過去事實相反的第三類條件句：If + had + p.p., ... <strong>would have + p.p.</strong>。'
+          }
+        ]
+      },
+
+      /* -------------------------------------------------------------------
+         PART H: Previous Knowledge (20 MCQs = 20 pts)
+         ------------------------------------------------------------------- */
+      {
+        id: 'H',
+        short: 'Part H',
+        label: '綜合語法',
+        title: 'Part H: Previous Knowledge 綜合語法',
+        subtitle: 'Choose the best answer. (主謂一致、介系詞、不定詞與動名詞、連接詞，共 20 分)',
+        type: 'mcq',
+        maxPoints: 20,
+        items: [
+          { id: 'H1', num: 1, prompt: 'Everybody _____ that the elderly _____ more care and support.', options: { A: 'know; needs', B: 'knows; need', C: 'know; need', D: 'knows; needs' }, answer: 'B', exp: '不定代詞 <strong>Everybody</strong> 作主語動詞用單數 knows；「the + 形容詞」<strong>the elderly</strong> 指長者群體，動詞用複數 need。' },
+          { id: 'H2', num: 2, prompt: 'One of my cousins _____ from Australia, and all of her classmates _____ very helpful.', options: { A: 'come; is', B: 'comes; are', C: 'come; are', D: 'comes; is' }, answer: 'B', exp: '<strong>One of + 複數名詞</strong> 的核心主語為單數 One，故用 comes；all of her classmates 為複數，用 are。' },
+          { id: 'H3', num: 3, prompt: 'Each of the students _____ got a new notebook, and Jack and his sister _____ pleased with their gifts.', options: { A: 'has; is', B: 'has; are', C: 'have; are', D: 'have; is' }, answer: 'B', exp: '<strong>Each of...</strong> 視為單數，用 has；Jack and his sister 為複數，用 are。' },
+          { id: 'H4', num: 4, prompt: 'My father always reminds me _____ my homework before dinner.', options: { A: 'to finish', B: 'finish', C: 'finished', D: 'finishing' }, answer: 'A', exp: '固定搭配 <strong>remind sb. to do sth.</strong>（提醒某人去做某事）。' },
+          { id: 'H5', num: 5, prompt: 'My sister was born _____ December, and there is a picture of her hanging _____ the wall.', options: { A: 'on; at', B: 'in; in', C: 'at; next to', D: 'in; on' }, answer: 'D', exp: '月份前用 <strong>in</strong>（in December）；掛在牆表面用 <strong>on</strong>（on the wall）。' },
+          { id: 'H6', num: 6, prompt: 'I left home early _____ I would not be late for school.', options: { A: 'in order to', B: 'so that', C: 'because of', D: 'although' }, answer: 'B', exp: '<strong>so that</strong> 後接完整子句表目的「以便、為了」；in order to 後須接原形動詞。' },
+          { id: 'H7', num: 7, prompt: 'We have a music lesson _____ Friday. We usually practise _____ the music room.', options: { A: 'on; in', B: 'in; at', C: 'at; on', D: 'on; at' }, answer: 'A', exp: '星期幾前用 <strong>on</strong>（on Friday）；在房間內部用 <strong>in</strong>（in the music room）。' },
+          { id: 'H8', num: 8, prompt: 'My family usually goes out _____ the weekend, and we sometimes have a picnic _____ the park.', options: { A: 'on; under', B: 'at; in', C: 'at; under', D: 'in; on' }, answer: 'B', exp: '英式常考用法為 <strong>at the weekend</strong>；在公園裡野餐用 <strong>in the park</strong>。' },
+          { id: 'H9', num: 9, prompt: 'The weather is usually hot _____ summer. Many children enjoy playing _____ the beach.', options: { A: 'on; in', B: 'in; on', C: 'in; under', D: 'at; next to' }, answer: 'B', exp: '季節前用 <strong>in</strong>（in summer）；在沙灘上用 <strong>on</strong>（on the beach）。' },
+          { id: 'H10', num: 10, prompt: 'What time did you leave home _____ this morning? Your keys are still _____ the table.', options: { A: 'on; in', B: 'in; at', C: '/; on', D: 'at; in' }, answer: 'C', exp: '<strong>this / that / next / last</strong> 開頭的時間詞前不加介系詞（/）；鑰匙在桌面上用 <strong>on the table</strong>。' },
+          { id: 'H11', num: 11, prompt: 'We were very thirsty, so we stopped _____ some water.', options: { A: 'drinking', B: 'drink', C: 'drank', D: 'to drink' }, answer: 'D', exp: '<strong>stop to do sth.</strong> 指「停下手邊的事去做另一件事（喝水）」；stop doing 則是停止喝水。' },
+          { id: 'H12', num: 12, prompt: 'I will never forget _____ my favourite singer for the first time last year.', options: { A: 'meet', B: 'meeting', C: 'to meet', D: 'met' }, answer: 'B', exp: '<strong>forget doing sth.</strong> 指「忘記曾經做過的事」（去年已經見過面）。' },
+          { id: 'H13', num: 13, prompt: 'I clearly remember _____ off the lights before leaving. Why are they still on?', options: { A: 'turn', B: 'turning', C: 'turned', D: 'to turn' }, answer: 'B', exp: '<strong>remember doing sth.</strong> 指「記得曾經做過的事」（記得離開前關過燈）。' },
+          { id: 'H14', num: 14, prompt: 'Either my sister or my father _____ prepare dinner, but both my sister and I _____ tired today.', options: { A: 'have to; are', B: 'has to; is', C: 'has to; are', D: 'have to; is' }, answer: 'C', exp: '<strong>Either... or...</strong> 依「就近原則」配合單數 my father 用 has to；<strong>both... and...</strong> 恆用複數 are。' },
+          { id: 'H15', num: 15, prompt: 'Five kilometres _____ a long way to walk, and your information _____ very useful.', options: { A: 'are; is', B: 'is; is', C: 'are; are', D: 'is; are' }, answer: 'B', exp: '距離作整體概念時動詞用單數 <strong>is</strong>；<strong>information</strong> 為不可數名詞，動詞亦用單數 is。' },
+          { id: 'H16', num: 16, prompt: 'Sarah wanted to join the school trip, _____ she was sick that day.', options: { A: 'but', B: 'and', C: 'because', D: 'so' }, answer: 'A', exp: '前後語意轉折（想去但生病了），用連接詞 <strong>but</strong>。' },
+          { id: 'H17', num: 17, prompt: 'Peter exercises every day _____ stay healthy and strong.', options: { A: 'because', B: 'so that', C: 'in order to', D: 'although' }, answer: 'C', exp: '空格後接原形動詞 stay，表目的須用 <strong>in order to + V</strong>。' },
+          { id: 'H18', num: 18, prompt: '_____ it was raining heavily, the football match continued.', options: { A: 'Because', B: 'However', C: 'Although', D: 'But' }, answer: 'C', exp: '表讓步「雖然下大雨，比賽仍繼續」，且引導子句須用 <strong>Although</strong>。' },
+          { id: 'H19', num: 19, prompt: 'Our school does not allow students _____ computer games during lessons.', options: { A: 'played', B: 'to play', C: 'playing', D: 'play' }, answer: 'B', exp: '固定句型 <strong>allow sb. to do sth.</strong>（允許某人做某事）。' },
+          { id: 'H20', num: 20, prompt: 'You can choose _____ a hamburger _____ a sandwich, but you cannot have both.', options: { A: 'either; or', B: 'both; and', C: 'neither; nor', D: 'not only; but also' }, answer: 'A', exp: '後句提示 cannot have both（不能兩者都要），故為二選一 <strong>either... or...</strong>。' }
+        ]
+      }
+    ];
+
+    const SECTION_IDS = WORKSHEET_DATA.map(s => s.id);
+    const TOTAL_MAX_POINTS = WORKSHEET_DATA.reduce((sum, s) => sum + s.maxPoints, 0);
+
+    // State
+    let userAnswers = {};      // { key: string }
+    let qnaOverrides = {};     // { B_Q1: true|false }
+    let gradedSections = {};   // { A: { correct, total, pct, wrongCount } }
+    let wrongOnlyMap = {};     // { A: boolean }
+    let currentTab = 'A';
+    let studentCardCollapsed = true;
+    let saveIndicatorTimer = null;
+
+    /* =====================================================================
+       Initialization & Safe LocalStorage Auto-Save (WeChat / Private Mode Safe)
+       ===================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      loadFromStorage();
+
+      const dateEl = document.getElementById('student-date');
+      if (dateEl && !dateEl.value) {
+        try {
+          dateEl.value = new Date().toISOString().split('T')[0];
+        } catch (e) {}
+      }
+
+      renderWorksheet();
+      applySavedValuesToDOM();
+      restoreGradedSections();
+      renderTabs();
+      switchTab(currentTab, false);
+      updateSummaryBar();
+      updateBottomBar();
+    });
+
+    function loadFromStorage() {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (parsed.answers && typeof parsed.answers === 'object') userAnswers = parsed.answers;
+        if (parsed.qnaOverrides && typeof parsed.qnaOverrides === 'object') qnaOverrides = parsed.qnaOverrides;
+        if (parsed.gradedSections && typeof parsed.gradedSections === 'object') gradedSections = parsed.gradedSections;
+        if (parsed.currentTab && SECTION_IDS.includes(parsed.currentTab)) currentTab = parsed.currentTab;
+        if (parsed.student) {
+          if (parsed.student.name) document.getElementById('student-name').value = parsed.student.name;
+          if (parsed.student.no) document.getElementById('student-no').value = parsed.student.no;
+          if (parsed.student.cls) document.getElementById('student-class').value = parsed.student.cls;
+          if (parsed.student.date) document.getElementById('student-date').value = parsed.student.date;
+        }
+      } catch (e) {
+        // Safely ignore storage errors in restricted WebViews / Private Mode
+      }
+    }
+
+    function persistToStorage() {
+      try {
+        const payload = {
+          answers: userAnswers,
+          qnaOverrides: qnaOverrides,
+          gradedSections: gradedSections,
+          currentTab: currentTab,
+          student: {
+            name: document.getElementById('student-name').value,
+            no: document.getElementById('student-no').value,
+            cls: document.getElementById('student-class').value,
+            date: document.getElementById('student-date').value
+          }
+        };
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        flashSaveIndicator();
+      } catch (e) {
+        // Safely ignore storage errors
+      }
+    }
+
+    function flashSaveIndicator() {
+      const el = document.getElementById('save-indicator');
+      if (!el) return;
+      el.classList.add('show');
+      clearTimeout(saveIndicatorTimer);
+      saveIndicatorTimer = setTimeout(() => el.classList.remove('show'), 1500);
+    }
+
+    function saveStudentInfo() {
+      persistToStorage();
+    }
+
+    function toggleStudentCard() {
+      studentCardCollapsed = !studentCardCollapsed;
+      document.getElementById('student-card-body').classList.toggle('collapsed', studentCardCollapsed);
+      document.getElementById('student-toggle-icon').textContent = studentCardCollapsed ? '展開 ▼' : '收起 ▲';
+    }
+
+    function restoreGradedSections() {
+      Object.keys(gradedSections).forEach(secId => {
+        if (SECTION_IDS.includes(secId)) {
+          gradeSection(secId, true);
+        }
+      });
+    }
+
+    /* =====================================================================
+       Completion Counter per Section
+       ===================================================================== */
+    function getSectionAnsweredCount(sec) {
+      if (sec.type === 'vocab' || sec.type === 'textarea_list' || sec.type === 'pills' || sec.type === 'mcq') {
+        return sec.items.filter(it => (userAnswers[it.id] || '').trim() !== '').length;
+      }
+      if (sec.type === 'reading') {
+        const m = sec.mcqs.filter(q => (userAnswers[q.id] || '').trim() !== '').length;
+        const f = sec.fibs.filter(q => (userAnswers[q.id] || '').trim() !== '').length;
+        const q = sec.qnas.filter(x => (userAnswers[x.id] || '').trim() !== '').length;
+        return m + f + q;
+      }
+      if (sec.type === 'vt') {
+        let cnt = 0;
+        sec.verbs.forEach(v => {
+          if ((userAnswers[`C${v.num}_ps`] || '').trim() !== '') cnt++;
+          if ((userAnswers[`C${v.num}_pp`] || '').trim() !== '') cnt++;
+        });
+        return cnt;
+      }
+      if (sec.type === 'participles') {
+        const p = sec.passageItems.filter(it => (userAnswers[it.id] || '').trim() !== '').length;
+        const r = sec.rewrites.filter(it => (userAnswers[it.id] || '').trim() !== '').length;
+        return p + r;
+      }
+      if (sec.type === 'tenses') {
+        let cnt = 0;
+        sec.items.forEach(it => {
+          if (it.split) {
+            if ((userAnswers['F6_a'] || '').trim() !== '' && (userAnswers['F6_b'] || '').trim() !== '') cnt++;
+          } else {
+            if ((userAnswers[it.id] || '').trim() !== '') cnt++;
+          }
+        });
+        return cnt;
+      }
+      return 0;
+    }
+
+    /* =====================================================================
+       Tabs, Summary Bar & Bottom Bar Rendering
+       ===================================================================== */
+    function renderTabs() {
+      const nav = document.getElementById('section-tabs');
+      let html = '';
+
+      WORKSHEET_DATA.forEach(sec => {
+        const g = gradedSections[sec.id];
+        const activeClass = currentTab === sec.id ? 'active' : '';
+        let statusClass = '';
+        let badgeText = '';
+
+        if (g) {
+          badgeText = `${g.correct}/${g.total}`;
+          if (g.pct >= 80) statusClass = 'grade-high';
+          else if (g.pct >= 60) statusClass = 'grade-mid';
+          else statusClass = 'grade-low';
+        } else {
+          const filled = getSectionAnsweredCount(sec);
+          badgeText = `${filled}/${sec.maxPoints}`;
+          if (filled === sec.maxPoints) statusClass = 'completed';
+        }
+
+        html += `
+          <button
+            type="button"
+            id="tab-${sec.id}"
+            class="tab-pill ${activeClass} ${statusClass}"
+            onclick="switchTab('${sec.id}', true)"
+          >
+            <span>${sec.short}</span>
+            <span class="tab-dot">${badgeText}</span>
+          </button>
+        `;
+      });
+
+      nav.innerHTML = html;
+    }
+
+    function switchTab(tabId, shouldScrollTop = true) {
+      if (!SECTION_IDS.includes(tabId)) tabId = 'A';
+      currentTab = tabId;
+      persistToStorage();
+      renderTabs();
+
+      document.querySelectorAll('.section-card').forEach(card => {
+        card.classList.toggle('hidden', card.dataset.section !== tabId);
+      });
+
+      const activePill = document.getElementById(`tab-${tabId}`);
+      if (activePill && activePill.scrollIntoView) {
+        try {
+          activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } catch (e) {
+          activePill.scrollIntoView();
+        }
+      }
+
+      updateBottomBar();
+      if (shouldScrollTop) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    function navigateSection(delta) {
+      const idx = SECTION_IDS.indexOf(currentTab);
+      const nextIdx = idx + delta;
+      if (nextIdx >= 0 && nextIdx < SECTION_IDS.length) {
+        switchTab(SECTION_IDS[nextIdx], true);
+      }
+    }
+
+    function updateSummaryBar() {
+      const gradedKeys = Object.keys(gradedSections).filter(k => SECTION_IDS.includes(k));
+      const totalScore = gradedKeys.reduce((sum, k) => sum + gradedSections[k].correct, 0);
+      const pct = Math.round((totalScore / TOTAL_MAX_POINTS) * 100);
+
+      document.getElementById('summary-graded-text').textContent = `已完成 ${gradedKeys.length} / ${SECTION_IDS.length} 大題`;
+      document.getElementById('summary-score-pill').textContent = `累計總分 ${totalScore} / ${TOTAL_MAX_POINTS}`;
+      document.getElementById('progress-fill').style.width = `${pct}%`;
+    }
+
+    function updateBottomBar() {
+      const container = document.getElementById('bottom-bar-inner');
+      const idx = SECTION_IDS.indexOf(currentTab);
+      const isFirst = idx === 0;
+      const isLast = idx === SECTION_IDS.length - 1;
+      const isSecGraded = Boolean(gradedSections[currentTab]);
+
+      const centerBtn = isSecGraded
+        ? `<button type="button" class="btn-regrade-bar" onclick="gradeSection('${currentTab}', false)">重新批改 (Part ${currentTab})</button>`
+        : `<button type="button" class="btn-submit-main" onclick="gradeSection('${currentTab}', false)">批改本大題 (Part ${currentTab})</button>`;
+
+      container.innerHTML = `
+        <button type="button" class="btn-nav-thumb" ${isFirst ? 'disabled' : ''} onclick="navigateSection(-1)">← 上一大題</button>
+        ${centerBtn}
+        <button type="button" class="btn-nav-thumb" ${isLast ? 'disabled' : ''} onclick="navigateSection(1)">下一大題 →</button>
+      `;
+    }
+
+    /* =====================================================================
+       Render All 8 Worksheet Sections
+       ===================================================================== */
+    function renderWorksheet() {
+      const root = document.getElementById('worksheet-root');
+      let html = '';
+
+      WORKSHEET_DATA.forEach((sec, idx) => {
+        const isFirst = idx === 0;
+        const isLast = idx === WORKSHEET_DATA.length - 1;
+
+        html += `
+          <section id="sec-card-${sec.id}" data-section="${sec.id}" class="card section-card">
+            <div class="section-head">
+              <div class="section-meta">
+                <span class="sec-tag">${sec.short} • ${sec.label}（滿分 ${sec.maxPoints} 分）</span>
+                <span id="sec-score-${sec.id}" class="sec-score-badge"></span>
+              </div>
+              <h2 class="section-title">${sec.title}</h2>
+              <p class="section-sub">${sec.subtitle}</p>
+            </div>
+
+            <!-- Per-Section Score Card -->
+            <div id="sec-result-${sec.id}" class="sec-result-card"></div>
+
+            <div id="sec-body-${sec.id}" class="section-body">
+              ${renderSectionBody(sec)}
+            </div>
+
+            <div class="section-footer-nav">
+              <button type="button" class="btn-sec-nav" ${isFirst ? 'disabled' : ''} onclick="navigateSection(-1)">← 上一大題</button>
+              <button type="button" class="btn-sec-nav primary" onclick="gradeSection('${sec.id}', false)">批改本大題 ✓</button>
+              <button type="button" class="btn-sec-nav" ${isLast ? 'disabled' : ''} onclick="navigateSection(1)">下一大題 →</button>
+            </div>
+          </section>
+        `;
+      });
+
+      root.innerHTML = html;
+    }
+
+    function renderSectionBody(sec) {
+      /* PART A: Vocabulary Grid */
+      if (sec.type === 'vocab') {
+        const cards = sec.items.map(it => `
+          <div id="q-card-${it.id}" class="q-card">
+            <div class="q-header">
+              <div class="q-num">${it.num}</div>
+              <div class="q-content">
+                <p class="q-prompt" style="font-weight:700; margin-bottom:7px;">${it.zh}</p>
+                <input
+                  type="text"
+                  id="input-${it.id}"
+                  class="text-input"
+                  placeholder="輸入生字紙對應英文..."
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('${it.id}', this.value)"
+                />
+                <div id="fb-${it.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        return `<div class="vocab-grid">${cards}</div>`;
+      }
+
+      /* PART B: Reading (MCQ + FIB + QNA) */
+      if (sec.type === 'reading') {
+        let html = `<div class="subpart-header">Part B-1：選擇題 MCQ (第 1–4 題)</div>`;
+        html += sec.mcqs.map(q => renderMcqCard(q)).join('');
+
+        html += `<div class="subpart-header">Part B-2：段落填空 FIB (第 5–7 題)</div>`;
+        html += `
+          <div id="passage-B" class="passage-box">
+            <p>
+              Traditional schools usually
+              <span class="inline-slot">
+                <span class="slot-num">5</span>
+                <input type="text" id="input-B_F1" class="passage-input" placeholder="填入片語" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="onAnswerChange('B_F1', this.value)" />
+              </span>
+              teaching logical thinking and facts because they are easy to measure. In contrast, creative thinking produces
+              <span class="inline-slot">
+                <span class="slot-num">6</span>
+                <input type="text" id="input-B_F2" class="passage-input" placeholder="填入形容詞" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="onAnswerChange('B_F2', this.value)" />
+              </span>
+              answers that others do not usually think of. Creative thinking is not as difficult as many people believe. It means putting different ideas together in new
+              <span class="inline-slot">
+                <span class="slot-num">7</span>
+                <input type="text" id="input-B_F3" class="passage-input" placeholder="填入名詞" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="onAnswerChange('B_F3', this.value)" />
+              </span>.
+            </p>
+          </div>
+        `;
+        html += sec.fibs.map(q => `
+          <div id="q-card-${q.id}" class="q-card hidden">
+            <div class="q-header">
+              <div class="q-num">${q.num}</div>
+              <div class="q-content">
+                <p class="q-prompt" style="margin-bottom:0;">${q.prompt}</p>
+                <div id="fb-${q.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        html += `<div class="subpart-header">Part B-3：簡答題 QNA (第 8–10 題 • 支援關鍵詞預判＋自評微調)</div>`;
+        html += sec.qnas.map(q => `
+          <div id="q-card-${q.id}" class="q-card">
+            <div class="q-header">
+              <div class="q-num">${q.num}</div>
+              <div class="q-content">
+                <p class="q-prompt">${q.prompt}</p>
+                <textarea
+                  id="input-${q.id}"
+                  rows="2"
+                  class="text-area"
+                  placeholder="請用英文完整回答..."
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('${q.id}', this.value)"
+                ></textarea>
+                <div id="fb-${q.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        return html;
+      }
+
+      /* PART C: Irregular Verb Table (42 verbs) */
+      if (sec.type === 'vt') {
+        const cards = sec.verbs.map(v => `
+          <div id="q-card-C${v.num}" class="q-card">
+            <div class="vt-card-top">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="q-num">${v.num}</span>
+                <span class="vt-base-word">${v.base}</span>
+              </div>
+              <span style="font-size:12px; color:var(--text-muted); font-weight:600;">Bare Infinitive</span>
+            </div>
+            <div class="vt-inputs">
+              <div class="vt-col">
+                <label for="input-C${v.num}_ps">Past Simple (過去式)</label>
+                <input
+                  type="text"
+                  id="input-C${v.num}_ps"
+                  class="text-input"
+                  placeholder="Past Simple"
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('C${v.num}_ps', this.value)"
+                />
+              </div>
+              <div class="vt-col">
+                <label for="input-C${v.num}_pp">Past Participle (過去分詞)</label>
+                <input
+                  type="text"
+                  id="input-C${v.num}_pp"
+                  class="text-input"
+                  placeholder="Past Participle"
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('C${v.num}_pp', this.value)"
+                />
+              </div>
+            </div>
+            <div id="fb-C${v.num}" class="feedback-box"></div>
+          </div>
+        `).join('');
+        return `<div class="vocab-grid">${cards}</div>`;
+      }
+
+      /* PART D: Passive Voice Rewrites */
+      if (sec.type === 'textarea_list') {
+        return sec.items.map(it => `
+          <div id="q-card-${it.id}" class="q-card">
+            <div class="q-header">
+              <div class="q-num">${it.num}</div>
+              <div class="q-content">
+                <p class="q-prompt">${it.prompt}</p>
+                <textarea
+                  id="input-${it.id}"
+                  rows="2"
+                  class="text-area"
+                  placeholder="請輸入改寫後的被動語態句子..."
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('${it.id}', this.value)"
+                ></textarea>
+                <div id="fb-${it.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      /* PART E: Participle Adjectives (Passage) + Clauses (Rewrites) */
+      if (sec.type === 'participles') {
+        let html = `<div class="subpart-header">Section 1：分詞形容詞填空 Participle Adjectives (8 題)</div>`;
+        html += `<div id="passage-E" class="passage-box"><p>`;
+        sec.passageTokens.forEach(tok => {
+          if (tok.text) {
+            html += tok.text;
+          } else {
+            html += `
+              <span class="inline-slot">
+                <span class="slot-num">${tok.num}</span>
+                <input
+                  type="text"
+                  id="input-${tok.id}"
+                  class="passage-input"
+                  placeholder="分詞形式"
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('${tok.id}', this.value)"
+                />
+                <span class="slot-hint">${tok.hint}</span>
+              </span>
+            `;
+          }
+        });
+        html += `</p></div>`;
+
+        html += sec.passageItems.map(it => `
+          <div id="q-card-${it.id}" class="q-card hidden">
+            <div class="q-header">
+              <div class="q-num">A${it.num}</div>
+              <div class="q-content">
+                <p class="q-prompt" style="margin-bottom:0;">${it.prompt}</p>
+                <div id="fb-${it.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        html += `<div class="subpart-header">Section 2：分詞子句改寫 Participle Clauses (10 題)</div>`;
+        html += sec.rewrites.map(it => `
+          <div id="q-card-${it.id}" class="q-card">
+            <div class="q-header">
+              <div class="q-num">${it.num}</div>
+              <div class="q-content">
+                <p class="q-prompt">${it.prompt}</p>
+                <textarea
+                  id="input-${it.id}"
+                  rows="2"
+                  class="text-area"
+                  placeholder="以分詞片語開頭改寫（必要時保留連接詞）..."
+                  autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+                  oninput="onAnswerChange('${it.id}', this.value)"
+                ></textarea>
+                <div id="fb-${it.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        return html;
+      }
+
+      /* PART F: Mixed Tenses Passage */
+      if (sec.type === 'tenses') {
+        let html = `<div id="passage-F" class="passage-box">`;
+        sec.paragraphs.forEach(para => {
+          html += `<p>`;
+          para.forEach(tok => {
+            if (tok.text) {
+              html += tok.text;
+            } else if (tok.split) {
+              html += `
+                <span class="inline-slot">
+                  <span class="slot-num">${tok.num}</span>
+                  <input type="text" id="input-F6_a" class="passage-input narrow" placeholder="助動詞" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="onAnswerChange('F6_a', this.value)" />
+                  <strong style="padding:0 2px;">${tok.mid}</strong>
+                  <input type="text" id="input-F6_b" class="passage-input narrow" placeholder="過去分詞" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="onAnswerChange('F6_b', this.value)" />
+                  <span class="slot-hint">${tok.hint}</span>
+                </span>
+              `;
+            } else {
+              html += `
+                <span class="inline-slot">
+                  <span class="slot-num">${tok.num}</span>
+                  <input type="text" id="input-${tok.id}" class="passage-input" placeholder="填寫時態" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" oninput="onAnswerChange('${tok.id}', this.value)" />
+                  <span class="slot-hint">${tok.hint}</span>
+                </span>
+              `;
+            }
+          });
+          html += `</p>`;
+        });
+        html += `</div>`;
+
+        html += sec.items.map(it => `
+          <div id="q-card-${it.id}" class="q-card hidden">
+            <div class="q-header">
+              <div class="q-num">${it.num}</div>
+              <div class="q-content">
+                <p class="q-prompt" style="margin-bottom:0;">${it.prompt}</p>
+                <div id="fb-${it.id}" class="feedback-box"></div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        return html;
+      }
+
+      /* PART G: Modal Verbs (Tap Pills) */
+      if (sec.type === 'pills') {
+        return sec.items.map(it => {
+          const pills = it.choices.map((ch, i) => `
+            <button
+              type="button"
+              id="pill-${it.id}-${i}"
+              data-choice="${escapeAttr(ch)}"
+              class="choice-pill"
+              onclick="onPillSelect('${it.id}', ${i})"
+            >${ch}</button>
+          `).join('');
+
+          return `
+            <div id="q-card-${it.id}" class="q-card">
+              <div class="q-header">
+                <div class="q-num">${it.num}</div>
+                <div class="q-content">
+                  <p class="q-prompt">
+                    ${it.before}
+                    <span id="preview-${it.id}" class="blank-preview">_______</span>
+                    ${it.after}
+                  </p>
+                  <div class="pill-choices">${pills}</div>
+                  <div id="fb-${it.id}" class="feedback-box"></div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      /* PART H: Previous Knowledge MCQs */
+      if (sec.type === 'mcq') {
+        return sec.items.map(q => renderMcqCard(q)).join('');
+      }
+
+      return '';
+    }
+
+    function renderMcqCard(q) {
+      const opts = Object.keys(q.options).map(k => `
+        <label id="opt-${q.id}-${k}" class="mcq-option">
+          <input
+            type="radio"
+            name="mcq-${q.id}"
+            value="${k}"
+            onchange="onMcqChange('${q.id}', '${k}')"
+          />
+          <span class="mcq-text"><strong>${k}.</strong> ${q.options[k]}</span>
+        </label>
+      `).join('');
+
+      return `
+        <div id="q-card-${q.id}" class="q-card">
+          <div class="q-header">
+            <div class="q-num">${q.num}</div>
+            <div class="q-content">
+              <p class="q-prompt">${q.prompt}</p>
+              <div class="mcq-list">${opts}</div>
+              <div id="fb-${q.id}" class="feedback-box"></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* =====================================================================
+       Restore Saved Values & Input Handlers
+       ===================================================================== */
+    function applySavedValuesToDOM() {
+      Object.keys(userAnswers).forEach(key => {
+        const val = userAnswers[key];
+        if (!val) return;
+
+        const inp = document.getElementById(`input-${key}`);
+        if (inp) {
+          inp.value = val;
+          return;
+        }
+
+        const radio = document.querySelector(`input[name="mcq-${key}"][value="${val}"]`);
+        if (radio) {
+          radio.checked = true;
+          const lbl = document.getElementById(`opt-${key}-${val}`);
+          if (lbl) lbl.classList.add('selected');
+          return;
+        }
+
+        const secG = WORKSHEET_DATA.find(s => s.id === 'G');
+        const gItem = secG && secG.items.find(it => it.id === key);
+        if (gItem) {
+          const idx = gItem.choices.indexOf(val);
+          if (idx !== -1) {
+            const pill = document.getElementById(`pill-${key}-${idx}`);
+            if (pill) pill.classList.add('selected');
+            const prev = document.getElementById(`preview-${key}`);
+            if (prev) prev.textContent = val;
+          }
+        }
+      });
+    }
+
+    function onAnswerChange(key, val) {
+      userAnswers[key] = val;
+      persistToStorage();
+      renderTabs();
+    }
+
+    function onMcqChange(qid, opt) {
+      userAnswers[qid] = opt;
+      document.querySelectorAll(`[id^="opt-${qid}-"]`).forEach(el => el.classList.remove('selected'));
+      const active = document.getElementById(`opt-${qid}-${opt}`);
+      if (active) active.classList.add('selected');
+      persistToStorage();
+      renderTabs();
+    }
+
+    function onPillSelect(qid, choiceIdx) {
+      const secG = WORKSHEET_DATA.find(s => s.id === 'G');
+      const item = secG.items.find(it => it.id === qid);
+      if (!item) return;
+      const val = item.choices[choiceIdx];
+      userAnswers[qid] = val;
+
+      document.querySelectorAll(`[id^="pill-${qid}-"]`).forEach(el => el.classList.remove('selected'));
+      const active = document.getElementById(`pill-${qid}-${choiceIdx}`);
+      if (active) active.classList.add('selected');
+
+      const prev = document.getElementById(`preview-${qid}`);
+      if (prev) prev.textContent = val;
+
+      persistToStorage();
+      renderTabs();
+    }
+
+    /* =====================================================================
+       Smart Normalization & Per-Section Grading Engine
+       ===================================================================== */
+    function normalizeText(str) {
+      if (!str) return '';
+      return str
+        .toString()
+        .replace(/[\u2018\u2019\u02BC\u2032]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/[.?!]+$/g, '')
+        .trim()
+        .toLowerCase();
+    }
+
+    function matchAccepted(raw, acceptedList) {
+      const trimmed = (raw || '').toString().trim();
+      if (!trimmed) return { status: 'blank', isCorrect: false };
+      const norm = normalizeText(trimmed);
+      const ok = acceptedList.some(acc => normalizeText(acc) === norm);
+      return { status: ok ? 'ok' : 'err', isCorrect: ok };
+    }
+
+    function checkQna(q, raw) {
+      const trimmed = (raw || '').toString().trim();
+      if (typeof qnaOverrides[q.id] === 'boolean') {
+        return {
+          status: qnaOverrides[q.id] ? 'ok' : (trimmed ? 'err' : 'blank'),
+          isCorrect: qnaOverrides[q.id],
+          isManual: true
+        };
+      }
+      if (!trimmed) return { status: 'blank', isCorrect: false, isManual: false };
+      const lower = normalizeText(trimmed);
+      let ok = false;
+      if (q.id === 'B_Q3') {
+        ok = lower.includes('different ideas') || (lower.includes('ideas') && lower.includes('new ways')) || lower.includes('putting');
+      } else {
+        ok = q.keywords.some(kw => lower.includes(kw));
+      }
+      return { status: ok ? 'ok' : 'err', isCorrect: ok, isManual: false };
+    }
+
+    function setQnaSelfCheck(qid, isCorrect) {
+      qnaOverrides[qid] = isCorrect;
+      persistToStorage();
+      gradeSection('B', true);
+      showToast(isCorrect ? '已調整為「算我答對 ✓」' : '已調整為「算我答錯 ✗」');
+    }
+
+    function getSectionComment(pct) {
+      if (pct === 100) return '滿分通關！這部分的知識點已經完全掌握，太棒了！';
+      if (pct >= 80) return '表現非常優秀！只差幾題就滿分了，快速檢視錯題解析即可。';
+      if (pct >= 60) return '已達及格標準！建議開啟「只看本題錯題」，針對弱項加強記憶。';
+      return '別灰心！先看每題下方的繁體中文解析，理解後按「重做本大題」再挑戰一次！';
+    }
+
+    function gradeSection(secId, silent = false) {
+      const sec = WORKSHEET_DATA.find(s => s.id === secId);
+      if (!sec) return;
+
+      let secCorrect = 0;
+      const total = sec.maxPoints;
+
+      /* --- PART A: Vocab --- */
+      if (sec.type === 'vocab') {
+        sec.items.forEach(it => {
+          const val = userAnswers[it.id] || '';
+          const res = matchAccepted(val, it.accepted);
+          if (res.isCorrect) secCorrect++;
+          renderStandardFeedback(it.id, val, res, it.display, it.exp, 'input');
+        });
+      }
+
+      /* --- PART B: Reading --- */
+      if (sec.type === 'reading') {
+        sec.mcqs.forEach(q => {
+          const val = userAnswers[q.id] || '';
+          const res = val ? { status: val === q.answer ? 'ok' : 'err', isCorrect: val === q.answer } : { status: 'blank', isCorrect: false };
+          if (res.isCorrect) secCorrect++;
+          renderMcqFeedback(q, val, res);
+        });
+        sec.fibs.forEach(q => {
+          const val = userAnswers[q.id] || '';
+          const res = matchAccepted(val, q.accepted);
+          if (res.isCorrect) secCorrect++;
+          renderStandardFeedback(q.id, val, res, q.display, q.exp, 'input');
+        });
+        sec.qnas.forEach(q => {
+          const val = userAnswers[q.id] || '';
+          const res = checkQna(q, val);
+          if (res.isCorrect) secCorrect++;
+          renderQnaFeedback(q, val, res);
+        });
+      }
+
+      /* --- PART C: Verb Table --- */
+      if (sec.type === 'vt') {
+        sec.verbs.forEach(v => {
+          const valPs = userAnswers[`C${v.num}_ps`] || '';
+          const valPp = userAnswers[`C${v.num}_pp`] || '';
+          const resPs = matchAccepted(valPs, v.ps);
+          const resPp = matchAccepted(valPp, v.pp);
+          if (resPs.isCorrect) secCorrect++;
+          if (resPp.isCorrect) secCorrect++;
+
+          const inpPs = document.getElementById(`input-C${v.num}_ps`);
+          const inpPp = document.getElementById(`input-C${v.num}_pp`);
+          if (inpPs) {
+            inpPs.classList.remove('input-correct', 'input-wrong');
+            inpPs.classList.add(resPs.isCorrect ? 'input-correct' : 'input-wrong');
+          }
+          if (inpPp) {
+            inpPp.classList.remove('input-correct', 'input-wrong');
+            inpPp.classList.add(resPp.isCorrect ? 'input-correct' : 'input-wrong');
+          }
+
+          const bothOk = resPs.isCorrect && resPp.isCorrect;
+          const card = document.getElementById(`q-card-C${v.num}`);
+          if (card) {
+            card.classList.remove('state-correct', 'state-wrong');
+            card.dataset.correct = bothOk ? 'true' : 'false';
+            card.classList.add(bothOk ? 'state-correct' : 'state-wrong');
+          }
+
+          const fb = document.getElementById(`fb-C${v.num}`);
+          if (fb) {
+            fb.classList.add('show');
+            const badge = bothOk
+              ? `<span class="status-badge ok">✓ 全對 (+2)</span>`
+              : (resPs.isCorrect || resPp.isCorrect)
+              ? `<span class="status-badge blank">△ 部分正確 (+1)</span>`
+              : `<span class="status-badge err">✗ 需複習 (0/2)</span>`;
+            fb.innerHTML = `
+              <div class="fb-row">
+                ${badge}
+                <span class="std-ans">標準：${escapeHtml(v.dPs)} / ${escapeHtml(v.dPp)}</span>
+              </div>
+              <div class="exp-box"><strong>【解析】</strong>${v.exp}</div>
+            `;
+          }
+        });
+      }
+
+      /* --- PART D: Passive Voice --- */
+      if (sec.type === 'textarea_list') {
+        sec.items.forEach(it => {
+          const val = userAnswers[it.id] || '';
+          const res = matchAccepted(val, it.accepted);
+          if (res.isCorrect) secCorrect++;
+          renderStandardFeedback(it.id, val, res, it.display, it.exp, 'input');
+        });
+      }
+
+      /* --- PART E: Participles --- */
+      if (sec.type === 'participles') {
+        sec.passageItems.forEach(it => {
+          const val = userAnswers[it.id] || '';
+          const res = matchAccepted(val, it.accepted);
+          if (res.isCorrect) secCorrect++;
+          renderStandardFeedback(it.id, val, res, it.display, it.exp, 'input');
+        });
+        sec.rewrites.forEach(it => {
+          const val = userAnswers[it.id] || '';
+          const res = matchAccepted(val, it.accepted);
+          if (res.isCorrect) secCorrect++;
+          renderStandardFeedback(it.id, val, res, it.display, it.exp, 'input');
+        });
+      }
+
+      /* --- PART F: Mixed Tenses --- */
+      if (sec.type === 'tenses') {
+        sec.items.forEach(it => {
+          if (it.split) {
+            const valA = userAnswers['F6_a'] || '';
+            const valB = userAnswers['F6_b'] || '';
+            const resA = matchAccepted(valA, it.acceptedA);
+            const resB = matchAccepted(valB, it.acceptedB);
+            const bothOk = resA.isCorrect && resB.isCorrect;
+            if (bothOk) secCorrect++;
+
+            const inpA = document.getElementById('input-F6_a');
+            const inpB = document.getElementById('input-F6_b');
+            if (inpA) {
+              inpA.classList.remove('input-correct', 'input-wrong');
+              inpA.classList.add(resA.isCorrect ? 'input-correct' : 'input-wrong');
+            }
+            if (inpB) {
+              inpB.classList.remove('input-correct', 'input-wrong');
+              inpB.classList.add(resB.isCorrect ? 'input-correct' : 'input-wrong');
+            }
+
+            const combinedUser = (valA.trim() || valB.trim()) ? `${valA.trim() || '___'} already ${valB.trim() || '___'}` : '';
+            const res = {
+              status: bothOk ? 'ok' : (combinedUser ? 'err' : 'blank'),
+              isCorrect: bothOk
+            };
+            renderStandardFeedback(it.id, combinedUser, res, it.display, it.exp, 'none');
+          } else {
+            const val = userAnswers[it.id] || '';
+            const res = matchAccepted(val, it.accepted);
+            if (res.isCorrect) secCorrect++;
+            renderStandardFeedback(it.id, val, res, it.display, it.exp, 'input');
+          }
+        });
+      }
+
+      /* --- PART G: Modal Verbs --- */
+      if (sec.type === 'pills') {
+        sec.items.forEach(it => {
+          const val = userAnswers[it.id] || '';
+          const res = val ? { status: val === it.answer ? 'ok' : 'err', isCorrect: val === it.answer } : { status: 'blank', isCorrect: false };
+          if (res.isCorrect) secCorrect++;
+
+          it.choices.forEach((ch, idx) => {
+            const pill = document.getElementById(`pill-${it.id}-${idx}`);
+            if (!pill) return;
+            pill.classList.remove('pill-correct', 'pill-wrong');
+            if (ch === it.answer) pill.classList.add('pill-correct');
+            else if (ch === val && !res.isCorrect) pill.classList.add('pill-wrong');
+          });
+
+          renderStandardFeedback(it.id, val, res, it.answer, it.exp, 'none');
+        });
+      }
+
+      /* --- PART H: Previous Knowledge --- */
+      if (sec.type === 'mcq') {
+        sec.items.forEach(q => {
+          const val = userAnswers[q.id] || '';
+          const res = val ? { status: val === q.answer ? 'ok' : 'err', isCorrect: val === q.answer } : { status: 'blank', isCorrect: false };
+          if (res.isCorrect) secCorrect++;
+          renderMcqFeedback(q, val, res);
+        });
+      }
+
+      const wrongCount = total - secCorrect;
+      const pct = Math.round((secCorrect / total) * 100);
+      gradedSections[secId] = { correct: secCorrect, total, pct, wrongCount };
+
+      const badgeEl = document.getElementById(`sec-score-${secId}`);
+      if (badgeEl) {
+        badgeEl.textContent = `得分 ${secCorrect}/${total} (${pct}%)`;
+        badgeEl.classList.add('show');
+        if (pct >= 80) {
+          badgeEl.style.background = 'var(--mint-bg)';
+          badgeEl.style.color = 'var(--mint-dark)';
+        } else if (pct >= 60) {
+          badgeEl.style.background = 'var(--amber-bg)';
+          badgeEl.style.color = 'var(--amber-dark)';
+        } else {
+          badgeEl.style.background = 'var(--rose-bg)';
+          badgeEl.style.color = 'var(--rose-dark)';
+        }
+      }
+
+      renderSectionResultCard(secId);
+      applySectionWrongFilter(secId);
+      persistToStorage();
+      renderTabs();
+      updateSummaryBar();
+      updateBottomBar();
+
+      if (!silent) {
+        const card = document.getElementById(`sec-card-${secId}`);
+        if (card) {
+          try {
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } catch (e) {
+            window.scrollTo(0, 0);
+          }
+        }
+        showToast(`${sec.short} 批改完成！得分 ${secCorrect} / ${total} (${pct}%)`);
+      }
+    }
+
+    function renderStandardFeedback(qid, userVal, res, displayAns, exp, inputMode) {
+      const card = document.getElementById(`q-card-${qid}`);
+      if (card) {
+        card.classList.remove('hidden', 'state-correct', 'state-wrong');
+        card.dataset.correct = res.isCorrect ? 'true' : 'false';
+        card.classList.add(res.isCorrect ? 'state-correct' : 'state-wrong');
+      }
+
+      if (inputMode === 'input') {
+        const inp = document.getElementById(`input-${qid}`);
+        if (inp) {
+          inp.classList.remove('input-correct', 'input-wrong');
+          inp.classList.add(res.isCorrect ? 'input-correct' : 'input-wrong');
+        }
+      }
+
+      const fb = document.getElementById(`fb-${qid}`);
+      if (fb) {
+        fb.classList.add('show');
+        const badgeHtml =
+          res.status === 'ok'
+            ? `<span class="status-badge ok">✓ 答對</span>`
+            : res.status === 'blank'
+            ? `<span class="status-badge blank">! 未作答</span>`
+            : `<span class="status-badge err">✗ 答錯</span>`;
+        const userHtml = res.status === 'err' ? `<span class="user-ans-tag">你的答案：<strong>${escapeHtml(userVal.trim())}</strong></span>` : '';
+
+        fb.innerHTML = `
+          <div class="fb-row">
+            ${badgeHtml}
+            ${userHtml}
+            <span class="std-ans">標準答案：${escapeHtml(displayAns)}</span>
+          </div>
+          <div class="exp-box"><strong>【解析】</strong>${exp}</div>
+        `;
+      }
+    }
+
+    function renderMcqFeedback(q, userVal, res) {
+      Object.keys(q.options).forEach(k => {
+        const optEl = document.getElementById(`opt-${q.id}-${k}`);
+        if (!optEl) return;
+        optEl.classList.remove('opt-correct', 'opt-wrong');
+        if (k === q.answer) optEl.classList.add('opt-correct');
+        else if (k === userVal && !res.isCorrect) optEl.classList.add('opt-wrong');
+      });
+
+      renderStandardFeedback(q.id, userVal, res, `${q.answer}. ${q.options[q.answer]}`, q.exp, 'none');
+    }
+
+    function renderQnaFeedback(q, userVal, res) {
+      const card = document.getElementById(`q-card-${q.id}`);
+      if (card) {
+        card.classList.remove('hidden', 'state-correct', 'state-wrong');
+        card.dataset.correct = res.isCorrect ? 'true' : 'false';
+        card.classList.add(res.isCorrect ? 'state-correct' : 'state-wrong');
+      }
+
+      const inp = document.getElementById(`input-${q.id}`);
+      if (inp) {
+        inp.classList.remove('input-correct', 'input-wrong');
+        inp.classList.add(res.isCorrect ? 'input-correct' : 'input-wrong');
+      }
+
+      const fb = document.getElementById(`fb-${q.id}`);
+      if (fb) {
+        fb.classList.add('show');
+        const badgeHtml = res.isCorrect
+          ? `<span class="status-badge ok">✓ ${res.isManual ? '自評答對' : '已偵測關鍵詞'}</span>`
+          : res.status === 'blank'
+          ? `<span class="status-badge blank">! 未作答</span>`
+          : `<span class="status-badge err">✗ 請對照參考答案自評</span>`;
+
+        fb.innerHTML = `
+          <div class="fb-row">
+            ${badgeHtml}
+          </div>
+          <div style="margin-bottom:6px; font-size:13.5px; color:var(--mint-dark); font-weight:700;">
+            參考答案：${escapeHtml(q.model)}
+          </div>
+          <div class="exp-box"><strong>【解析】</strong>${q.exp}</div>
+          <div class="self-check-bar">
+            <button type="button" class="btn-self-check ${res.isCorrect ? 'active-ok' : ''}" onclick="setQnaSelfCheck('${q.id}', true)">算我答對 ✓</button>
+            <button type="button" class="btn-self-check ${!res.isCorrect ? 'active-err' : ''}" onclick="setQnaSelfCheck('${q.id}', false)">算我答錯 ✗</button>
+          </div>
+        `;
+      }
+    }
+
+    function renderSectionResultCard(secId) {
+      const g = gradedSections[secId];
+      const box = document.getElementById(`sec-result-${secId}`);
+      if (!box) return;
+
+      if (!g) {
+        box.classList.remove('show');
+        box.innerHTML = '';
+        return;
+      }
+
+      const badgeColor = g.pct >= 80 ? 'var(--mint-main)' : g.pct >= 60 ? 'var(--amber-main)' : 'var(--rose-main)';
+      const isWrongOnly = Boolean(wrongOnlyMap[secId]);
+
+      box.classList.add('show');
+      box.innerHTML = `
+        <div class="sec-result-top">
+          <div class="sec-result-score">
+            Part ${secId} 得分：${g.correct} / ${g.total} 分
+            <span class="sec-result-pct" style="background:${badgeColor};">${g.pct}%</span>
+          </div>
+          <div style="font-size:13px; font-weight:700; color:var(--rose-dark);">答對 ${g.correct} • 答錯/未填 ${g.wrongCount}</div>
+        </div>
+        <p class="sec-result-comment">${getSectionComment(g.pct)}</p>
+        <div class="sec-result-actions">
+          <button
+            type="button"
+            class="btn-sec-action ${isWrongOnly ? 'wrong-active' : ''}"
+            onclick="toggleSectionWrongOnly('${secId}')"
+            ${g.wrongCount === 0 ? 'disabled style="opacity:0.5;"' : ''}
+          >
+            ${isWrongOnly ? '顯示本大題全部' : '只看本題錯題'}
+          </button>
+          <button type="button" class="btn-sec-action regrade" onclick="gradeSection('${secId}', false)">重新批改</button>
+          <button type="button" class="btn-sec-action retake" onclick="confirmResetSection('${secId}')">重做本大題</button>
+        </div>
+      `;
+    }
+
+    function toggleSectionWrongOnly(secId) {
+      wrongOnlyMap[secId] = !wrongOnlyMap[secId];
+      applySectionWrongFilter(secId);
+      renderSectionResultCard(secId);
+    }
+
+    function applySectionWrongFilter(secId) {
+      const onlyWrong = Boolean(wrongOnlyMap[secId]);
+      const secCard = document.getElementById(`sec-card-${secId}`);
+      if (!secCard) return;
+
+      secCard.querySelectorAll('.q-card').forEach(c => {
+        if (onlyWrong) {
+          c.classList.toggle('hidden', c.dataset.correct !== 'false');
+        } else {
+          if (gradedSections[secId]) c.classList.remove('hidden');
+        }
+      });
+    }
+
+    /* =====================================================================
+       Full Score Report Modal & Bulk Actions
+       ===================================================================== */
+    function openReportModal() {
+      const gradedKeys = Object.keys(gradedSections).filter(k => SECTION_IDS.includes(k));
+      const totalScore = gradedKeys.reduce((sum, k) => sum + gradedSections[k].correct, 0);
+      const overallPct = Math.round((totalScore / TOTAL_MAX_POINTS) * 100);
+
+      const sName = document.getElementById('student-name').value.trim();
+      const sCls = document.getElementById('student-class').value.trim();
+      const sNo = document.getElementById('student-no').value.trim();
+      const meta = [sName, sCls, sNo ? `No.${sNo}` : ''].filter(Boolean).join(' • ');
+      document.getElementById('report-student-meta').textContent = meta || '點擊任意大題即可快速跳轉練習或檢討';
+
+      let listHtml = '';
+      WORKSHEET_DATA.forEach(sec => {
+        const g = gradedSections[sec.id];
+        const filled = getSectionAnsweredCount(sec);
+        let statusText = `未批改（已填 ${filled}/${sec.maxPoints}）`;
+        let fillPct = Math.round((filled / sec.maxPoints) * 100);
+        let barColor = '#94a3b8';
+
+        if (g) {
+          statusText = `${g.correct} / ${g.total} 分 (${g.pct}%)`;
+          fillPct = g.pct;
+          barColor = g.pct >= 80 ? 'var(--mint-main)' : g.pct >= 60 ? 'var(--amber-main)' : 'var(--rose-main)';
+        }
+
+        listHtml += `
+          <button type="button" class="report-row" onclick="closeReportModal(); switchTab('${sec.id}', true);">
+            <div class="report-row-top">
+              <span>${sec.short}：${sec.label}</span>
+              <span style="color:${g ? barColor : 'var(--text-muted)'}; white-space:nowrap; margin-left:8px;">${statusText}</span>
+            </div>
+            <div class="report-row-bar">
+              <div class="report-row-fill" style="width:${fillPct}%; background:${barColor};"></div>
+            </div>
+          </button>
+        `;
+      });
+
+      document.getElementById('report-modal-body').innerHTML = `
+        <div class="report-hero">
+          <div class="report-stat mint">
+            <div class="report-stat-label">累計總得分</div>
+            <div class="report-stat-val">${totalScore} <span style="font-size:13px; color:var(--text-muted);">/ ${TOTAL_MAX_POINTS}</span></div>
+          </div>
+          <div class="report-stat blue">
+            <div class="report-stat-label">已完成大題 / 總分率</div>
+            <div class="report-stat-val">${gradedKeys.length}/${SECTION_IDS.length} <span style="font-size:13px; color:var(--blue-dark);">(${overallPct}%)</span></div>
+          </div>
+        </div>
+        <div class="report-list">${listHtml}</div>
+      `;
+
+      document.getElementById('report-modal-backdrop').classList.add('show');
+    }
+
+    function closeReportModal() {
+      document.getElementById('report-modal-backdrop').classList.remove('show');
+    }
+
+    function gradeAllSections() {
+      WORKSHEET_DATA.forEach(sec => gradeSection(sec.id, true));
+      openReportModal();
+      const totalScore = Object.values(gradedSections).reduce((s, g) => s + g.correct, 0);
+      showToast(`已完成全部 8 大題批改！總得分 ${totalScore} / ${TOTAL_MAX_POINTS}`);
+    }
+
+    /* =====================================================================
+       Demo Fill Current Section & Reset Controls
+       ===================================================================== */
+    function fillDemoCurrentSection() {
+      const sec = WORKSHEET_DATA.find(s => s.id === currentTab);
+      if (!sec) return;
+
+      if (sec.type === 'vocab' || sec.type === 'textarea_list') {
+        sec.items.forEach(it => {
+          userAnswers[it.id] = it.accepted[0];
+          const inp = document.getElementById(`input-${it.id}`);
+          if (inp) inp.value = it.accepted[0];
+        });
+      } else if (sec.type === 'reading') {
+        sec.mcqs.forEach(q => {
+          onMcqChange(q.id, q.answer);
+          const radio = document.querySelector(`input[name="mcq-${q.id}"][value="${q.answer}"]`);
+          if (radio) radio.checked = true;
+        });
+        sec.fibs.forEach(q => {
+          userAnswers[q.id] = q.accepted[0];
+          const inp = document.getElementById(`input-${q.id}`);
+          if (inp) inp.value = q.accepted[0];
+        });
+        sec.qnas.forEach(q => {
+          userAnswers[q.id] = q.model;
+          const inp = document.getElementById(`input-${q.id}`);
+          if (inp) inp.value = q.model;
+        });
+      } else if (sec.type === 'vt') {
+        sec.verbs.forEach(v => {
+          userAnswers[`C${v.num}_ps`] = v.ps[0];
+          userAnswers[`C${v.num}_pp`] = v.pp[0];
+          const inpPs = document.getElementById(`input-C${v.num}_ps`);
+          const inpPp = document.getElementById(`input-C${v.num}_pp`);
+          if (inpPs) inpPs.value = v.ps[0];
+          if (inpPp) inpPp.value = v.pp[0];
+        });
+      } else if (sec.type === 'participles') {
+        sec.passageItems.forEach(it => {
+          userAnswers[it.id] = it.accepted[0];
+          const inp = document.getElementById(`input-${it.id}`);
+          if (inp) inp.value = it.accepted[0];
+        });
+        sec.rewrites.forEach(it => {
+          userAnswers[it.id] = it.accepted[0];
+          const inp = document.getElementById(`input-${it.id}`);
+          if (inp) inp.value = it.accepted[0];
+        });
+      } else if (sec.type === 'tenses') {
+        sec.items.forEach(it => {
+          if (it.split) {
+            userAnswers['F6_a'] = it.acceptedA[0];
+            userAnswers['F6_b'] = it.acceptedB[0];
+            const a = document.getElementById('input-F6_a');
+            const b = document.getElementById('input-F6_b');
+            if (a) a.value = it.acceptedA[0];
+            if (b) b.value = it.acceptedB[0];
+          } else {
+            userAnswers[it.id] = it.accepted[0];
+            const inp = document.getElementById(`input-${it.id}`);
+            if (inp) inp.value = it.accepted[0];
+          }
+        });
+      } else if (sec.type === 'pills') {
+        sec.items.forEach(it => {
+          const idx = it.choices.indexOf(it.answer);
+          if (idx !== -1) onPillSelect(it.id, idx);
+        });
+      } else if (sec.type === 'mcq') {
+        sec.items.forEach(q => {
+          onMcqChange(q.id, q.answer);
+          const radio = document.querySelector(`input[name="mcq-${q.id}"][value="${q.answer}"]`);
+          if (radio) radio.checked = true;
+        });
+      }
+
+      persistToStorage();
+      renderTabs();
+      showToast(`已示範填入 ${sec.short} 的標準答案！請點擊「批改本大題」測試。`);
+    }
+
+    function confirmResetSection(secId) {
+      openModal(
+        `重做 Part ${secId}？`,
+        `這將只清除 Part ${secId} 的作答與成績，不會影響其他大題的進度。確定要重做嗎？`,
+        [
+          { label: '取消', cls: 'modal-btn cancel', onClick: closeModal },
+          {
+            label: '確定重做',
+            cls: 'modal-btn danger',
+            onClick: () => {
+              closeModal();
+              resetSection(secId);
+            }
+          }
+        ]
+      );
+    }
+
+    function resetSection(secId) {
+      const sec = WORKSHEET_DATA.find(s => s.id === secId);
+      if (!sec) return;
+
+      Object.keys(userAnswers).forEach(k => {
+        if (k.startsWith(secId)) delete userAnswers[k];
+      });
+      if (secId === 'B') qnaOverrides = {};
+      delete gradedSections[secId];
+      delete wrongOnlyMap[secId];
+
+      const bodyEl = document.getElementById(`sec-body-${secId}`);
+      if (bodyEl) bodyEl.innerHTML = renderSectionBody(sec);
+
+      const scoreBadge = document.getElementById(`sec-score-${secId}`);
+      if (scoreBadge) {
+        scoreBadge.classList.remove('show');
+        scoreBadge.textContent = '';
+      }
+
+      renderSectionResultCard(secId);
+      persistToStorage();
+      renderTabs();
+      updateSummaryBar();
+      updateBottomBar();
+      window.scrollTo(0, 0);
+      showToast(`已重置 Part ${secId}，可以重新作答！`);
+    }
+
+    function confirmResetAll() {
+      openModal(
+        '確定要全部重置？',
+        '這將會清空所有 8 個大題的作答內容與批改成績。確定要重新開始嗎？',
+        [
+          { label: '取消', cls: 'modal-btn cancel', onClick: closeModal },
+          {
+            label: '確定全部重置',
+            cls: 'modal-btn danger',
+            onClick: () => {
+              closeModal();
+              resetAll();
+            }
+          }
+        ]
+      );
+    }
+
+    function resetAll() {
+      userAnswers = {};
+      qnaOverrides = {};
+      gradedSections = {};
+      wrongOnlyMap = {};
+      currentTab = 'A';
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+
+      renderWorksheet();
+      renderTabs();
+      switchTab('A', true);
+      updateSummaryBar();
+      updateBottomBar();
+      showToast('已清空全卷作答與成績紀錄！');
+    }
+
+    /* =====================================================================
+       Custom Modal, Toast & HTML Escape Utilities
+       ===================================================================== */
+    function openModal(title, msg, buttons) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-msg').textContent = msg;
+      const actions = document.getElementById('modal-actions');
+      actions.innerHTML = '';
+      buttons.forEach(b => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = b.label;
+        btn.className = b.cls;
+        btn.onclick = b.onClick;
+        actions.appendChild(btn);
+      });
+      document.getElementById('modal-backdrop').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.remove('show');
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+      })[m]);
+    }
+
+    function escapeAttr(str) {
+      return escapeHtml(str);
+    }
+  </script>
+</body>
+</html>
